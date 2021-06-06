@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/css/style.css">
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/administrator.js"></script>
 
 <style>
 body, html {
@@ -23,28 +26,18 @@ body, html {
 </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse ">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\Projekat.html">AHILEJ</a>
+  
+  <nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">AHILEJ</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> LogIN</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\Projekat.html">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Uskoro <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Uskoro</a></li>
-          <li><a href="#">Uskoro</a></li>
-          <li><a href="#">Uskoro</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Uskoro</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+  </nav>
 
 <div class="bg-image"></div>
 
@@ -52,17 +45,34 @@ body, html {
   <form  name="loginform" action="/action_page.php" class="container">
     <h1>Login</h1>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" id="email" placeholder="Enter Email" name="email" required>
+    <label for="username" name="username"><b>Username</b></label>
+    <input type="text" id="username" placeholder="Enter username" name="username" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+    <label for="password" name="password"><b>Password</b></label>
+    <input id="password" type="password" placeholder="Enter Password" name="password" required>
 
-    <button type="submit" class="btn">Login</button>
+   
+   <label for="uloga" class="form-label">Prijavljujem se u ulozi:</label>
+      <br/>
+      
+      <input type="radio" id="clan" name="uloga" value="clan" required> 
+      <label for="clan" class="form-label">Clan</label>
+      <br/>
+      
+      <input type="radio" id="trener" name="uloga" value="trener">
+      <label for="trener" class="form-label">Trener</label>
+      <br/>
+      
+      <input type="radio" id="admin" name="uloga" value="admin" >
+      <label for="admin" class="form-label">Administrator</label>
+      <br/>
+  
+
+    <button type="submit" >Login</button>
   </form>
   </div>
 
-
+ 
 
 </body>
 </html>

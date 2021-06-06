@@ -29,6 +29,9 @@ public class Sala implements Serializable {
 	@Column
 	private String oznaka;
 	
+	@Column
+	private int broj;
+	
 	@OneToMany(mappedBy="sala", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
 	private Set<Termin>termini= new HashSet<Termin>();
 	
@@ -84,6 +87,14 @@ public class Sala implements Serializable {
 
 	public void setTermini(Set<Termin> termini) {
 		this.termini = termini;
+	}
+
+	public int getBroj() {
+		return broj;
+	}
+
+	public void setBroj(int broj) {
+		this.broj = broj;
 	}
 
 

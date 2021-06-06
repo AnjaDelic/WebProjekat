@@ -113,6 +113,21 @@ public class Administrator implements Serializable {
 		this.active = active;
 	}
 
+	public Administrator(String username, String password, String name, String surname, String phone, String email,
+			Date birthday, boolean active) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.phone = phone;
+		this.email = email;
+		this.birthday = birthday;
+		this.active = active;
+	}
+
+	
+
 	
 	
 	

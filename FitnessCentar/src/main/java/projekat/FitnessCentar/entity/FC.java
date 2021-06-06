@@ -78,6 +78,17 @@ public class FC implements Serializable{
 		this.email = email;
 	}
 
+	public FC(String naziv, String adresa, String broj, String email) {
+		super();
+		this.naziv = naziv;
+		this.adresa = adresa;
+		this.broj = broj;
+		this.email = email;
+	}
+
+	
+
+
 	
 	
 	

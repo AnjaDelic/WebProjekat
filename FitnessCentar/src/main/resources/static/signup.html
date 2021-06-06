@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="sigup.css">
+    <link rel="stylesheet" href="/css/signup.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -11,29 +11,16 @@
 <body>
     
   <nav class="navbar navbar-inverse ">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\Projekat.html">AHILEJ</a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">AHILEJ</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> LogIN</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\Projekat.html">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Uskoro <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Uskoro</a></li>
-          <li><a href="#">Uskoro</a></li>
-          <li><a href="#">Uskoro</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Uskoro</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="C:\Users\USER\Desktop\repository\WebProjekat\FitnessCentar\src\main\resources\static\login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
-
-
+  </nav>
 
   <form class="modal-content" action="/action_page.php">
     <div class="container">
@@ -89,22 +76,22 @@
       <label for="uloga" class="form-label">Prijavljujem se u ulozi:</label>
       <br/>
       
-      <input type="radio" id="uloga" name="uloga" >
+      <input type="radio" id="clan" name="uloga" >
       <label for="clan" class="form-label">Clan</label>
       <br/>
       
-      <input type="radio" id="uloga" name="uloga" >
+      <input type="radio" id="trener" name="uloga" >
       <label for="trener" class="form-label">Trener</label>
       <br/>
       
-      <input type="radio" id="uloga" name="uloga" >
+      <input type="radio" id="admin" name="uloga" >
       <label for="admin" class="form-label">Administrator</label>
       <br/>
     </div>
       <br/>
 
       <div class="clearfix">
-        <button type="submit" class="signupbtn"> <b> Sign Up </b> </button>
+        <button type="submit" class="signupbtn" id="button"> <b> Sign Up </b> </button>
       </div>
     </div>
   </form>

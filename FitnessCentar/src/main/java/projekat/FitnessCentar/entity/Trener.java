@@ -58,6 +58,31 @@ public class Trener implements Serializable {
 		
 	}
 
+	
+
+	
+
+
+
+	public Trener(String username, String password, String name, String surname, String phone, String email,
+			Date birthday, boolean active, double prosek) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.phone = phone;
+		this.email = email;
+		this.birthday = birthday;
+		this.active = active;
+		this.prosek = prosek;
+	}
+
+
+
+
+
+
 
 	public Long getId() {
 		return id;
@@ -146,6 +171,18 @@ public class Trener implements Serializable {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+
+
+	public double getProsek() {
+		return prosek;
+	}
+
+
+
+	public void setProsek(double prosek) {
+		this.prosek = prosek;
 	}
 
 

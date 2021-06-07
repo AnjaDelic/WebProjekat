@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import projekat.FitnessCentar.entity.Clan;
+import projekat.FitnessCentar.entity.ClanDTO;
 import projekat.FitnessCentar.entity.FC;
 import projekat.FitnessCentar.service.ClanService;
 

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import projekat.FitnessCentar.entity.Trener;
 import projekat.FitnessCentar.repository.TrenerRepository;
 
+import java.util.List;
+
 @Service
 public class TrenerService {
 

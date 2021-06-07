@@ -54,7 +54,7 @@ public class ClanService {
     public Clan findOne(String username)
     {
 
-        Clan clan=clanRepository.findClanByUsername(username);
+        Clan clan=clanRepository.findAClanByUsername(username);
         return clan;
 
     }

@@ -22,7 +22,7 @@ public class Trener implements Serializable {
 	@Column(nullable=false, unique=true) //ne mogu dva korisnika da imaju isto ime i zelimo da svaki korisnik ima username
 	private String username;
 	
-	@Column(nullable=false, unique=true) 
+	@Column(nullable=false) 
 	private String password;
 	
 	@Column
@@ -31,7 +31,7 @@ public class Trener implements Serializable {
 	@Column
 	private String surname;
 	
-	@Column
+	@Column(unique=true)
 	private String phone;
 	
 	@Column(nullable=false, unique=true) //ne mogu dva korisnika da imaju isti email i zelimo da svaki korisnik ima email 

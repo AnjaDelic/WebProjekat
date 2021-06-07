@@ -36,4 +36,9 @@ public class AdministratorService {
         return administrator;
 
     }
+
+    public Administrator findByUsernameAndPassword(String username,String password){
+        Administrator administrator=administratorRepository.findAdministratorByUsernameAndPassword(username,password);
+        return administrator;
+     }
 }

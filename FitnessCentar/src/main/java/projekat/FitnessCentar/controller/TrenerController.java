@@ -47,37 +47,63 @@ public class TrenerController {
 
     //dodavanje trenera
     @PostMapping(value = "/post",consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Trener> createTrener(@RequestBody Trener c) throws Exception{
+    public ResponseEntity<Trener> createTrener(@RequestBody TrenerDTO c) throws Exception{
 
-        Trener trener = new Trener(c.getUsername(),c.getPassword(),c.getName(),c.getSurname(),c.getPhone(),c.getEmail(),c.getBirthday(),c.isActive(),c.getProsek());
+        TrenerDTO tr = new TrenerDTO(c.getUsername(),c.getPassword(),c.getName(),c.getSurname(),c.getPhone(),c.getEmail(),c.getBirthday());
+
+        Trener trener1=new Trener();
+        trener1.setEmail(tr.getEmail());
+        trener1.setBirthday(tr.getBirthday());
+        trener1.setUsername(tr.getUsername());
+        trener1.setSurname(tr.getSurname());
+        trener1.setName(tr.getName());
+        trener1.setPassword(tr.getPassword());
+        trener1.setPhone(tr.getPhone());
+        trener1.setActive(false);
+        trener1.setProsek(0.0);
 
 
-        Trener noviTrener= trenerService.createTrener(trener);
+        Trener noviTrener= trenerService.createTrener(trener1);
 
         return new ResponseEntity<>(noviTrener, HttpStatus.CREATED);
     }
 
     //brisanje trenera
     @DeleteMapping(value="/delete/{id}")
-    public ResponseEntity<Void> deleteTrener(@PathVariable Long id)
-    {
+    public ResponseEntity<String> deleteTrener(@PathVariable Long id) throws Exception {
+        Trener forDelete = this.trenerService.findOne1(id);
+        if (forDelete == null) {
+            return new ResponseEntity<>("ne postoji",HttpStatus.NOT_FOUND);
+        }
         this.trenerService.deleteTrener(id);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT); //odg 204 uspesno brisanje
+        return new ResponseEntity<>("uspesno obrisan",HttpStatus.OK); //odg 204 uspesno brisanje
     }
 
     //izmena clan
-    @PutMapping(value = "/put/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Trener> updateTrener(@PathVariable Long id, @RequestBody Trener c) throws Exception
-    {
-        Trener trener = new Trener(c.getUsername(),c.getPassword(),c.getName(),c.getSurname(),c.getPhone(),c.getEmail(),c.getBirthday(),c.isActive(),c.getProsek());
+    @PutMapping(value = "/put/{id}")
+    public ResponseEntity<Trener> updateTrainer(@PathVariable Long id) throws Exception
+     {
+         Trener trener = this.trenerService.findOne1(id);
+         if (trener == null) {
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         }
+         trener.setActive(true);
+         Trener savedTrener = this.trenerService.updateTrener(trener);
+         return new ResponseEntity<Trener>(savedTrener ,HttpStatus.OK);
+     }
 
+     @GetMapping ( produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TrenerZahteviDTO>> sviTreneri() {
+        List<Trener> lista = this.trenerService.findAll();
+        List<TrenerZahteviDTO> trList=new ArrayList<>();
 
-        trener.setId(id); //proslednjen nam je njegov id
-
-        Trener izmenjencTrener= trenerService.updateTrener(trener);
-
-        return new ResponseEntity<>(izmenjencTrener,HttpStatus.OK);
+        for (Trener tr:lista)
+        {
+            if(tr.isActive()==false){
+          TrenerZahteviDTO trjedan = new TrenerZahteviDTO(tr.getName(),tr.getSurname(),tr.getId());
+            trList.add(trjedan); }
+        }
+        return new ResponseEntity<>(trList,HttpStatus.OK);
 
     }
 

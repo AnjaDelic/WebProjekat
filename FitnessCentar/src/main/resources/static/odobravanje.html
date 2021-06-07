@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr">
 <head>
   <title>Odobravanje trenera</title>
   <meta charset="utf-8">
@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/zahtevi.js"></script>
 </head>
 <body>
 
@@ -14,7 +18,7 @@
   <nav class="navbar navbar-inverse ">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" >AHILEJ</a>
+        <a class="navbar-brand" href="admin.html" >AHILEJ</a>
       </div>
       <ul class="nav navbar-nav">
        
@@ -50,81 +54,22 @@
     </div>
   </nav>
 
-<div class="container">
-  <h2>Spisak trenera za odobravanje</h2>
-  <div></div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>FirstName</th>
-        <th>Lastname</th>
-        <th>  </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Default val</td>
-        <td>Default val</td>
-        <td>
-            <button type="button" class="btn btn-success">Accept</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger">Decline</button>
-        </td>
-      </tr>      
-      <tr class="success">
-        <td>Default val</td>
-        <td>Default val</td>
-        <td>
-            <button type="button" class="btn btn-success">Accept</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger">Decline</button>
-        </td>
-      </tr>
-      <tr class="danger">
-        <td>Default val</td>
-        <td>Default val</td>
-        <td>
-            <button type="button" class="btn btn-success">Accept</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger">Decline</button>
-        </td>
-      </tr>
-      <tr class="info">
-        <td>Default val</td>
-        <td>Default val</td>
-        <td>
-            <button type="button" class="btn btn-success">Accept</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger">Decline</button>
-        </td>
-      </tr>
-      <tr class="warning">
-        <td>Default val</td>
-        <td>Default val</td>
-        <td>
-            <button type="button" class="btn btn-success">Accept</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger">Decline</button>
-        </td>
-      </tr>
-      <tr class="active">
-        <td>Default val</td>
-        <td>Default val</td>
-        <td>
-            <button type="button" class="btn btn-success">Accept</button>
-        </td>
-        <td>
-            <button type="button" class="btn btn-danger">Decline</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="w3-container">
+    <h2>Spisak trenera za odobravanje</h2>
+    <div></div>
+    <table class="table table-sm table-dark" id="zahtevi">
+      <thead>
+        <tr>
+          <th>FirstName</th>
+          <th>Lastname</th>
+          <th>Prihvati</th>
+          <th>Odbij</th>
+        </tr>
+      </thead>
+      
+    </table>
+  </div>
+        
 
 </body>
 </html>

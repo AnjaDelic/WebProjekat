@@ -16,32 +16,15 @@ public class AdministratorController {
     private AdministratorService administratorService;
 
 
-    @PostMapping (value = "/login",produces = MediaType.APPLICATION_JSON_VALUE) //odgovara na post zahtev
+    @PostMapping (value = "/login") //odgovara na post zahtev
     public ResponseEntity<Administrator> getAdmin(@RequestBody Administrator administrator) {
 
-        Administrator admin = this.administratorService.findOne(administrator.getUsername());
-
-        if(admin==null)
-        {
-            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+       Administrator admin = this.administratorService.findByUsernameAndPassword(administrator.getUsername(), administrator.getPassword());
+        if (admin == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
-
-        Administrator administrator1=new Administrator();
-       administrator1.setEmail(admin.getEmail());
-       administrator1.setActive(admin.isActive());
-       administrator1.setBirthday(admin.getBirthday());
-       administrator1.setUsername(admin.getUsername());
-       administrator1.setSurname(admin.getSurname());
-       administrator1.setId(admin.getId());
-       administrator1.setName(admin.getName());
-       administrator1.setPassword(admin.getPassword());
-       administrator1.setPhone(admin.getPhone());
-
-
-
-
-        return new ResponseEntity<>(administrator1, HttpStatus.OK);
+        return new ResponseEntity<Administrator>(admin, HttpStatus.OK);
     }
 
     @PostMapping(value = "/post",consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)

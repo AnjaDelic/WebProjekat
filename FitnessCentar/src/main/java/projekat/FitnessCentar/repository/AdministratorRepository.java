@@ -11,4 +11,5 @@ import java.util.List;
 public interface AdministratorRepository extends JpaRepository<Administrator,Long> {
 
     Administrator findAdministratorByUsername(String username);
+    Administrator findAdministratorByUsernameAndPassword(String username,String password);
 }

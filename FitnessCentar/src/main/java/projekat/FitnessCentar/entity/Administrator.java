@@ -15,7 +15,7 @@ public class Administrator implements Serializable {
 	@Column(nullable=false, unique=true) //ne mogu dva korisnika da imaju isto ime i zelimo da svaki korisnik ima username
 	private String username;
 	
-	@Column(nullable=false, unique=true) 
+	@Column(nullable=false) 
 	private String password;
 	
 	@Column
@@ -39,6 +39,19 @@ public class Administrator implements Serializable {
 
 	public Administrator() {
 	
+	}
+
+	public Administrator(String username, String password, String name, String surname, String phone, String email,
+			Date birthday, boolean active) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.phone = phone;
+		this.email = email;
+		this.birthday = birthday;
+		this.active = active;
 	}
 
 	public Long getId() {
@@ -113,18 +126,7 @@ public class Administrator implements Serializable {
 		this.active = active;
 	}
 
-	public Administrator(String username, String password, String name, String surname, String phone, String email,
-			Date birthday, boolean active) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.surname = surname;
-		this.phone = phone;
-		this.email = email;
-		this.birthday = birthday;
-		this.active = active;
-	}
+	
 
 	
 

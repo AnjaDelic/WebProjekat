@@ -63,4 +63,17 @@ public class TrenerService {
 
 
     }
+
+    public  Trener findOne1(Long id) throws Exception{
+        Trener trener=this.trenerRepository.findTrenerById(id);
+        return trener;
+    }
+
+    public List<Trener> findAll()
+     {
+        List<Trener> lista=  this.trenerRepository.findAll();
+        return lista;
+     }
+
+
 }

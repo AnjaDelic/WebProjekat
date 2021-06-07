@@ -36,14 +36,37 @@ $(document).on("submit", "form", function (event) {
             },
             error: function (res) { 
                 //console.log(res);                                      
-                alert("Greška!");
+                alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
             }
         });
     }
 
+    
     if(uloga === "clan") {
-       // var ulogaa = 2;
-    }
+        // var ulogaa = 2;
+        $.ajax({
+         type: "POST",                                               
+         url: "http://localhost:8080/api/Clan/login" ,             
+         dataType: "json",                                          
+         contentType: "application/json",                            
+         data: JSON.stringify(prijava),                          
+         success: function (response) {                                   
+             console.log(response);
+         
+             alert("Uspesna prijava!");
+             localStorage.setItem('uloga','2');
+             var index=response.id;
+             localStorage.setItem('id',index);
+             //window.location.href="";
+             
+         },
+         error: function (res) { 
+             //console.log(res);                                      
+             alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
+         }
+     });
+ 
+     }
 
     if(uloga === "admin") {
        // var ulogaa = 3;
@@ -70,7 +93,7 @@ $(document).on("submit", "form", function (event) {
             },
             error: function (res) { 
                                                     
-                alert("Greška!");
+                alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
             }
         });
 

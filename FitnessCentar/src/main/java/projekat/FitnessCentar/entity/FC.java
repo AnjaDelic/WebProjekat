@@ -20,10 +20,18 @@ public class FC implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Column(nullable=false,unique=true)
+	public FC(String naziv, String adresa, String broj, String email) {
+		super();
+		this.naziv = naziv;
+		this.adresa = adresa;
+		this.broj = broj;
+		this.email = email;
+	}
+
+	@Column(nullable=false)
 	private String naziv;
 	
-	@Column(nullable=false,unique=true)
+	@Column(nullable=false)
 	private String adresa;
 	
 	@Column(nullable=false,unique=true)
@@ -78,13 +86,7 @@ public class FC implements Serializable{
 		this.email = email;
 	}
 
-	public FC(String naziv, String adresa, String broj, String email) {
-		super();
-		this.naziv = naziv;
-		this.adresa = adresa;
-		this.broj = broj;
-		this.email = email;
-	}
+	
 
 	
 

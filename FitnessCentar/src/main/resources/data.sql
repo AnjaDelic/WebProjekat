@@ -20,6 +20,11 @@ INSERT INTO TRENER (active,birthday,email,name,password,phone,prosek,surname,use
 INSERT INTO TRENER (active,birthday,email,name,password,phone,prosek,surname,username,fitness_centri_id) VALUES ('1','2000-12-12','marina00@gmail.com','Marina','zzz','0645968325','0','Jankovic','marinatrener',2)
 INSERT INTO TRENER (active,birthday,email,name,password,phone,prosek,surname,username,fitness_centri_id) VALUES ('1','1996-05-31','andjela96@gmail.com','Andjela','call','0644468375','0','Jovanovic','andjatrener',2)
 
+INSERT INTO TRENER (active,birthday,email,name,password,phone,prosek,surname,username,fitness_centri_id) VALUES ('0','2002-10-12','milan02@gmail.com','Milan','123','0640008375','0','Jakovljevic','milanjakovljevic',1)
+INSERT INTO TRENER (active,birthday,email,name,password,phone,prosek,surname,username,fitness_centri_id) VALUES ('0','1998-07-31','anastasija@gmail.com','Anastasija','123','0640055575','0','Blagojjevic','anastaijatrener',2)
+INSERT INTO TRENER (active,birthday,email,name,password,phone,prosek,surname,username,fitness_centri_id) VALUES ('0','1999-05-10','milica@gmail.com','Milica','123','0640111375','0','Jovanov','milica99',2)
+
+
 INSERT INTO TRENING (naziv,opis,trajanje,tip) VALUES ('crossfit','za napredne vezbace','90','snage')
 INSERT INTO TRENING (naziv,opis,trajanje,tip) VALUES ('zumba','za pocetnike vezbace','30','anaerobni')
 INSERT INTO TRENING (naziv,opis,trajanje,tip) VALUES ('tabata','za sve vezbace','60','cardio')

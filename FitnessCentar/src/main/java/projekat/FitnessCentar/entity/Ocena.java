@@ -12,7 +12,7 @@ public class Ocena implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column
 	private double ocena;
 
 	

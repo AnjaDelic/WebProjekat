@@ -21,7 +21,7 @@ public class Clan implements Serializable {
 	@Column(nullable=false, unique=true) //ne mogu dva korisnika da imaju isto ime i zelimo da svaki korisnik ima username
 	private String username;
 	
-	@Column(nullable=false, unique=true) 
+	@Column(nullable=false) 
 	private String password;
 	
 	@Column
@@ -55,11 +55,6 @@ public class Clan implements Serializable {
 	public Clan() {
 		
 	}
-
-
-
-
-
 
 	public Clan(String username, String password, String name, String surname, String phone, String email,
 			Date birthday, boolean active) {

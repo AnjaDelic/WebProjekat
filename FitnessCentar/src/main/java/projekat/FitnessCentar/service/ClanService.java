@@ -32,7 +32,7 @@ public class ClanService {
 
         if(probaClan==null) //provera da li u bazi postoji takav fc
         {
-            throw new Exception("Ne postoji FC");
+            throw new Exception("Ne postoji Clan");
         }
         //promena vrednosti
         probaClan.setActive(clan.isActive());
@@ -48,6 +48,14 @@ public class ClanService {
         Clan izmenjenClan=this.clanRepository.save(probaClan);
         return izmenjenClan;
 
+
+    }
+
+    public Clan findOne(String username)
+    {
+
+        Clan clan=clanRepository.findClanByUsername(username);
+        return clan;
 
     }
 

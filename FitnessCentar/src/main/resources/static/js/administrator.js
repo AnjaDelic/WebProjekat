@@ -103,21 +103,3 @@ $(document).on("submit", "form", function (event) {
    
 });
 
-/*$(document).ready(function () {
-    let uloga = localStorage.getItem("uloga");
-    if(uloga == null){
-       localStorage.setItem("uloga", 0);
-    }
-    if(uloga == 1){
-        window.location.href = "";
-        alert("Vec ste prijavljeni!");
-    }
-    if(uloga == 2){
-        window.location.href = "";
-        alert("Vec ste prijavljeni!");
-    }
-    if(uloga == 3){
-        window.location.href = "..admin.html";
-        alert("Vec ste prijavljeni!");
-    }
-});*/

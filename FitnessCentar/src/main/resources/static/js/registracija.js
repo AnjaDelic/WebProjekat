@@ -11,7 +11,7 @@ $(document).on("submit", "#signup", function (event) {
     let passwordREP = $("#psw-repeat").val();
     let email = $("#inputEmail4").val();
     let phone = $("#inputNumber").val();
-    let uloga = document.forms['signup'].uloga.value;
+    let uloga = $().val();
     //pravim objekat koji cu proslediti na backend
     //NAZIVI DA SE POKLAPAJU
     if (password !== passwordREP) {
@@ -39,7 +39,9 @@ $(document).on("submit", "#signup", function (event) {
             data: JSON.stringify(noviKorisnik),                                //  pretvara JavaScript objekat u JSON
             success: function (response) {
                 console.log(response);
-
+                localStorage.setItem('uloga','1');
+                var index=response.id;
+                localStorage.setItem('id',index);
 
                 alert("CESTITAMO:Vasa registracija je primljena! Nakon sto administrator odobri Vas zahtev imacete pristup sajtu");
                 window.location.href="index.html";
@@ -52,8 +54,6 @@ $(document).on("submit", "#signup", function (event) {
     }
     else{
 
-
-
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/api/Clan/post",                 // URL na koji saljem,odg na post metodu
@@ -63,7 +63,7 @@ $(document).on("submit", "#signup", function (event) {
             success: function (response) {
                 console.log(response);
                 alert("Uspešno ste se registrovali!");
-                localStorage.setItem('uloga','clan');
+                localStorage.setItem('uloga','2');
                 var index=response.id;
                 localStorage.setItem('id',index);
                 //window.location.href="";

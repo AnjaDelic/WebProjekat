@@ -47,10 +47,10 @@ public class TrenerController {
 
 
     //dodavanje trenera
-    @PostMapping(value = "/post",consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/post", produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Trener> createTrener(@RequestBody TrenerDTO c) throws Exception{
 
-        TrenerDTO tr = new TrenerDTO(c.getUsername(),c.getPassword(),c.getName(),c.getSurname(),c.getPhone(),c.getEmail(),c.getBirthday());
+        TrenerDTO tr = new TrenerDTO(c.getName(),c.getSurname(),c.getUsername(),c.getPassword(),c.getEmail(),c.getPhone(),c.getBirthday());
 
         Trener trener1=new Trener();
         trener1.setEmail(tr.getEmail());
@@ -66,7 +66,7 @@ public class TrenerController {
 
         Trener noviTrener= trenerService.createTrener(trener1);
 
-        return new ResponseEntity<>(noviTrener, HttpStatus.CREATED);
+        return new ResponseEntity<Trener>(noviTrener, HttpStatus.CREATED);
     }
 
     //brisanje trenera

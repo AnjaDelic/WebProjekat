@@ -37,7 +37,7 @@ public class ClanController {
 
         Clan noviClan= clanService.createClan(clan1);
 
-        return new ResponseEntity<>(noviClan,HttpStatus.CREATED);
+        return new ResponseEntity<Clan>(noviClan,HttpStatus.CREATED);
     }
 
     //brisanje clana

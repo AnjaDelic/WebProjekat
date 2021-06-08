@@ -102,10 +102,11 @@ public class Termin  {
 	}
 
 
+	public Trening getTrening() {
+		return trening;
+	}
 
-
-
-	
-	
-	
+	public void setTrening(Trening trening) {
+		this.trening = trening;
+	}
 }

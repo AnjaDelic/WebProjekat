@@ -13,7 +13,7 @@
     
     <script src="js/jquery.validate.min.js"></script>
    
-    <script src="#"></script> 
+    <script src="/js/treninzi.js"></script> 
 </head>
 <body>
 
@@ -37,16 +37,71 @@
       <div id="sviTreninzi">
         <h1>Treninzi</h1>
         
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCenaOd">Cena od</label>
+              <input type="number" class="form-control" id="inputCenaOd" >
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputCenaDo">do:</label>
+              <input type="number" class="form-control" id="inputCenaDo" >
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputDate">Datum</label>
+            <input type="date" class="form-control" id="inputDate" >
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputOpis">Opis</label>
+              <input type="text" class="form-control" id="inputOpis">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputTip">Tip</label>
+              <select id="inputTip" class="form-control">
+                <option selected>Izaberite...</option>
+                <option>cardio</option>
+                <option>snage</option>
+                <option>anaerobni</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputNaziv">Naziv</label>
+              <select id="inputNaziv" class="form-control">
+                <option selected>Izaberite...</option>
+                <option>crossfit</option>
+                <option>box</option>
+                <option>zumba</option>
+                <option>tabata</option>
+              </select>
+            </div>
+            
+          </div>
+          <br/>
+          <br/>
+          <button type="submit" class="btn btn-primary">Pretrazi po kriterijumima</button>
+        </form>
+
+
+
+
+
         <br><br>
         <div class="container">
-            <table id="employees">
+            <table class="table table-dark" id="treninzi">
                 <tr>
-                    <th>ID</th>
+                    
                     <th>Naziv</th>
                     <th>Opis</th>
                     <th>Tip</th>
-                    <th>Trajanje</th>
+                    <th>Trajanje(min)</th>
                     <th>Cena</th>
+                    <th>Pocetak</th>
+                    <th>Kraj</th>
                 </tr>                
             </table>
         </div>

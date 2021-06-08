@@ -58,9 +58,12 @@ public class Trening {
 	public void setTrajanje(double trajanje) {
 		this.trajanje = trajanje;
 	}
-	
-	
-	
-	
 
+	public String getTip() {
+		return tip;
+	}
+
+	public void setTip(String tip) {
+		this.tip = tip;
+	}
 }

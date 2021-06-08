@@ -9,7 +9,7 @@ import java.util.List;
 public class TerminService {
     @Autowired
     private TerminRepository terminRepository;
-
+//
     public List<Termin> findAll() {
         List<Termin> termini = this.terminRepository.findAll();
         return termini;

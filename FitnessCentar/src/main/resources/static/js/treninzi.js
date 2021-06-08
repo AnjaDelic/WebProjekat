@@ -1,24 +1,25 @@
 $(document).ready(function () {   
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/FC",                 // URL koji se gađa
+        url: "http://localhost:8080/api/termin",                 // URL koji se gađa
         dataType: "json",                                           // tip povratne vrednosti
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
 
-            for (let fc of response) {                        
+            for (let tr of response) {                        
                 let row = "<tr>";                                  
-                row += "<td>" + fc.naziv+ "</td>";       
-                row += "<td>" + fc.adresa + "</td>";
-                row += "<td>" + fc.broj + "</td>";
-                row += "<td>" + fc.email + "</td>";
-             
-                let btn = "<button class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
-                row += "<td>" + btn + "</td>";                      
+                row += "<td>" + tr.naziv+ "</td>";       
+                row += "<td>" + tr.opis + "</td>";
+                row += "<td>" + tr.tip + "</td>";
+                row += "<td>" +  tr.trajanje + "</td>";
+                row += "<td>" +  tr.cena + "</td>";
+                row += "<td>" +  tr.pocetak + "</td>";
+                row += "<td>" +  tr.kraj + "</td>";
+                                     
         
                 row += "</tr>";                                     
 
-                $('#fcs').append(row);                       
+                $('#treninzi').append(row);                       
             }
         },
         error: function (response) {                               
@@ -26,3 +27,4 @@ $(document).ready(function () {
         }
     });
 });
+

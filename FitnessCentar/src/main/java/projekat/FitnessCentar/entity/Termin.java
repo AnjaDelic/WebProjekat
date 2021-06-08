@@ -60,7 +60,7 @@ public class Termin  {
 	private Date kraj;
 	
 	@Column(nullable=false)
-	private double cena;
+	private int cena;
 	
 	
 
@@ -93,11 +93,11 @@ public class Termin  {
 		this.kraj = kraj;
 	}
 
-	public double getCena() {
+	public int getCena() {
 		return cena;
 	}
 
-	public void setCena(double cena) {
+	public void setCena(int cena) {
 		this.cena = cena;
 	}
 

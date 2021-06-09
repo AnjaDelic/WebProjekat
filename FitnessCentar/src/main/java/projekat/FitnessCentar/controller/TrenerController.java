@@ -22,7 +22,7 @@ public class TrenerController {
     @PostMapping (value = "/login",produces = MediaType.APPLICATION_JSON_VALUE) //odgovara na post zahtev
     public ResponseEntity<Trener> getTrener(@RequestBody Trener trener) throws Exception {
 
-        Trener tr = this.trenerService.findOne(trener.getUsername());
+        Trener tr = this.trenerService.findByUsernameAndPassword(trener.getUsername(),trener.getPassword());
 
         if(tr==null)
         {

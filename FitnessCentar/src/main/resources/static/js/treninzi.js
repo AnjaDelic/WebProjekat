@@ -80,17 +80,17 @@ $(document).on("submit", "#sviTreninzi", function (event) {
     $.ajax({
         type: "GET",                                               
         url: "http://localhost:8080/api/termin/pretraga",                
-        dataType: "json",                                                             
-        data: JSON.stringify(pretraga), 
+      
+        data: JSON.stringify(pretraga),  
         success: function (response) {                              
-            console.log("SUCCESS:\n", response);
-            alert("uspeh");                    
-                
+            console.log("SUCCESS:\n", response);                    
+
         },
         error: function (response) {                               
             console.log("ERROR:\n", response);
-            alert("greska");
         }
+
+
     });
 
 });

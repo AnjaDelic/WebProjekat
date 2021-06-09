@@ -31,11 +31,11 @@ $(document).on("submit", "form", function (event) {
                 localStorage.setItem('uloga','1');
                 var index=response.id;
                 localStorage.setItem('id',index);
-                window.location.href="trener.html";
+                //window.location.href="trener.html";
                 
             },
             error: function (res) { 
-                //console.log(res);                                      
+                console.log(response);                               
                 alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
             }
         });
@@ -57,11 +57,11 @@ $(document).on("submit", "form", function (event) {
              localStorage.setItem('uloga','2');
              var index=response.id;
              localStorage.setItem('id',index);
-             //window.location.href="";
+             //window.location.href="clan.html";
              
          },
          error: function (res) { 
-             //console.log(res);                                      
+            console.log(response);                               
              alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
          }
      });
@@ -92,7 +92,7 @@ $(document).on("submit", "form", function (event) {
                 
             },
             error: function (res) { 
-                                                    
+                console.log(response);                             
                 alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
             }
         });

@@ -2,6 +2,7 @@ package projekat.FitnessCentar.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import projekat.FitnessCentar.entity.Administrator;
 import projekat.FitnessCentar.entity.Clan;
 import projekat.FitnessCentar.repository.ClanRepository;
 
@@ -57,6 +58,11 @@ public class ClanService {
         Clan clan=clanRepository.findAClanByUsername(username);
         return clan;
 
+    }
+
+    public Clan findByUsernameAndPassword(String username, String password){
+        Clan clan=clanRepository.findClanByUsernameAndPassword(username,password);
+        return clan;
     }
 
 }

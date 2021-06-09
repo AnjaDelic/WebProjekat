@@ -66,7 +66,7 @@ public class ClanController {
     @PostMapping (value = "/login",produces = MediaType.APPLICATION_JSON_VALUE) //odgovara na post zahtev
     public ResponseEntity<Clan> getClan(@RequestBody Clan clan) throws Exception {
 
-        Clan cl = this.clanService.findOne(clan.getUsername());
+        Clan cl = this.clanService.findByUsernameAndPassword(clan.getUsername(),clan.getPassword());
 
         if(cl==null)
         {

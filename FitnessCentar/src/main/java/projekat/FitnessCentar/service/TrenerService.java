@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import projekat.FitnessCentar.entity.Administrator;
 import projekat.FitnessCentar.entity.Trener;
 import projekat.FitnessCentar.repository.TrenerRepository;
 
@@ -76,6 +77,11 @@ public class TrenerService {
         List<Trener> lista=  this.trenerRepository.findAll();
         return lista;
      }
+
+    public Trener findByUsernameAndPassword(String username, String password){
+        Trener trener=trenerRepository.findTrenerByUsernameAndPassword(username,password);
+        return trener;
+    }
 
 
 }

@@ -17,12 +17,14 @@ public class AdministratorController {
 
 
     @PostMapping (value = "/login") //odgovara na post zahtev
-    public ResponseEntity<Administrator> getAdmin(@RequestBody Administrator administrator) {
+    public ResponseEntity<Administrator> getAdmin(@RequestBody Administrator administrator) throws Exception {
 
        Administrator admin = this.administratorService.findByUsernameAndPassword(administrator.getUsername(), administrator.getPassword());
         if (admin == null) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
         }
+
+
 
         return new ResponseEntity<Administrator>(admin, HttpStatus.OK);
     }

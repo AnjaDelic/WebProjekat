@@ -8,4 +8,5 @@ import projekat.FitnessCentar.entity.ClanDTO;
 
 public interface ClanRepository extends JpaRepository<Clan,Long> {
     Clan findAClanByUsername(String username);
+    Clan findClanByUsernameAndPassword(String username,String password);
 }

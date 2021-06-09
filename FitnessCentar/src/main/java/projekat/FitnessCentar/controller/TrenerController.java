@@ -48,9 +48,40 @@ public class TrenerController {
 
     //dodavanje trenera
     @PostMapping(value = "/post", produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Trener> createTrener(@RequestBody TrenerDTO c) throws Exception{
+    public ResponseEntity<TrenerDTO> createTrener(@RequestBody TrenerDTO c) throws Exception{
 
-        TrenerDTO tr = new TrenerDTO(c.getName(),c.getSurname(),c.getUsername(),c.getPassword(),c.getEmail(),c.getPhone(),c.getBirthday());
+        TrenerDTO tr = new TrenerDTO(c.getName(),c.getSurname(),c.getUsername(),c.getPassword(),c.getEmail(),c.getPhone(),c.getBirthday(),c.getVrati());
+
+
+
+        List<Trener> trenerList = trenerService.findAll();
+        for(Trener trener : trenerList) {
+            if(trener.getUsername().equalsIgnoreCase(c.getUsername())) {
+                TrenerDTO vrati = new TrenerDTO("","","","","","",tr.getBirthday(),1);
+                return new ResponseEntity <>(vrati, HttpStatus.CREATED);
+            }
+            if(trener.getEmail().equalsIgnoreCase(c.getEmail())) {
+                TrenerDTO vrati = new TrenerDTO("","","","","","",tr.getBirthday(),2);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+            if(trener.getPhone().equalsIgnoreCase(c.getPhone())) {
+                TrenerDTO vrati = new TrenerDTO("","","","","","",tr.getBirthday(),3);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+
+        }
+
+        TrenerDTO trener2=new TrenerDTO();
+        trener2.setEmail(tr.getEmail());
+        trener2.setBirthday(tr.getBirthday());
+        trener2.setUsername(tr.getUsername());
+        trener2.setSurname(tr.getSurname());
+        trener2.setName(tr.getName());
+        trener2.setPassword(tr.getPassword());
+        trener2.setPhone(tr.getPhone());
+        trener2.setVrati(tr.getVrati());
+
+
 
         Trener trener1=new Trener();
         trener1.setEmail(tr.getEmail());
@@ -66,7 +97,7 @@ public class TrenerController {
 
         Trener noviTrener= trenerService.createTrener(trener1);
 
-        return new ResponseEntity<Trener>(noviTrener, HttpStatus.CREATED);
+        return new ResponseEntity<TrenerDTO>(trener2, HttpStatus.CREATED);
     }
 
     //brisanje trenera

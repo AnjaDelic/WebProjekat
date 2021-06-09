@@ -31,7 +31,9 @@ $(document).ready(function () {
 $(document).on("submit", "#sviTreninzi", function (event) {  
     event.preventDefault(); 
 
-    
+    let clear=$("#treninzi");
+    clear.hide();
+
     naziv = document.forms['tr'].inputNaziv.value;
    
     opis = document.forms['tr'].inputOpis.value;
@@ -45,23 +47,16 @@ $(document).on("submit", "#sviTreninzi", function (event) {
     let pocetak = $("#inputPocetak").val();
     let kraj = $("#inputKraj").val();
    
-    let kriterijum=0;
+ 
 
+
+    if(cena ==="" || isNaN(cena)){ cena=10000; } //nije nis stavio ili nije stavio br
+
+    if(trajanje==="" || isNaN(trajanje)){ trajanje=90000;}
+
+    if(pocetak ===""){pocetak="2200-12-12";}
    
-
-    if(naziv!="Izaberite..."){kriterijum =1;}
-
-    if(opis!="Izaberite..."){kriterijum =2;}
-
-    if(tip!=""){kriterijum =3;}
-
-    if(cena!=""){ kriterijum =4; }
-
-    if(trajanje!=""){ kriterijum =5;}
-
-    if(pocetak!=""){kriterijum=6; }
-   
-    if(kraj!=""){kriterijum=7;}
+    if(kraj===""){kraj="2200-22-22";}
     
 
     
@@ -70,20 +65,39 @@ $(document).on("submit", "#sviTreninzi", function (event) {
         opis,
         tip,
         cena,
-        kriterijum,
        trajanje,
        pocetak,
        kraj
        
     }
 
+    console.log(pretraga);
     $.ajax({
-        type: "GET",                                               
+        type: "POST",                                               
         url: "http://localhost:8080/api/termin/pretraga",                
-      
+        dataType: "json",                                        
+        contentType: "application/json",   
         data: JSON.stringify(pretraga),  
         success: function (response) {                              
-            console.log("SUCCESS:\n", response);                    
+            console.log("SUCCESS:\n", response);    
+            
+            for (let tr of response) {      
+                
+                
+                let row = "<tr>";                                  
+                row += "<td>" + tr.naziv+ "</td>";       
+                row += "<td>" + tr.opis + "</td>";
+                row += "<td>" + tr.tip + "</td>";
+                row += "<td>" +  tr.trajanje + "</td>";
+                row += "<td>" +  tr.cena + "</td>";
+                row += "<td>" +  tr.pocetak + "</td>";
+                row += "<td>" +  tr.kraj + "</td>";
+                                     
+        
+                row += "</tr>";                                     
+
+                $('#treninzi').append(row);                       
+            }
 
         },
         error: function (response) {                               

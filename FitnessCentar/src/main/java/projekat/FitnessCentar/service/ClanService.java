@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projekat.FitnessCentar.entity.Administrator;
 import projekat.FitnessCentar.entity.Clan;
+import projekat.FitnessCentar.entity.FC;
 import projekat.FitnessCentar.repository.ClanRepository;
+
+import java.util.List;
 
 @Service
 public class ClanService {
@@ -63,6 +66,13 @@ public class ClanService {
     public Clan findByUsernameAndPassword(String username, String password){
         Clan clan=clanRepository.findClanByUsernameAndPassword(username,password);
         return clan;
+    }
+
+    public List<Clan> findAll()
+    {
+        List<Clan> clanovi=this.clanRepository.findAll();
+        return clanovi;
+
     }
 
 }

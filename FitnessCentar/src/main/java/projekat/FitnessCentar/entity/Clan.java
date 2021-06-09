@@ -30,7 +30,7 @@ public class Clan implements Serializable {
 	@Column
 	private String surname;
 	
-	@Column
+	@Column(unique = true)
 	private String phone;
 	
 	@Column(nullable=false, unique=true) //ne mogu dva korisnika da imaju isti email i zelimo da svaki korisnik ima email 

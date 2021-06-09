@@ -11,6 +11,9 @@ import projekat.FitnessCentar.entity.ClanDTO;
 import projekat.FitnessCentar.entity.FC;
 import projekat.FitnessCentar.service.ClanService;
 
+import java.util.Date;
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/api/Clan")
 public class ClanController {
@@ -20,11 +23,28 @@ public class ClanController {
 
     //dodavanje Clana
     @PostMapping(value = "/post", produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Clan> createClan(@RequestBody ClanDTO clan) throws Exception{
-        ClanDTO cl=new ClanDTO(clan.getName(),clan.getSurname(),clan.getUsername(),clan.getPassword(),clan.getEmail(),
-                clan.getPhone(),clan.getBirthday());
+    public ResponseEntity<ClanDTO> createClan(@RequestBody ClanDTO clanDTO) throws Exception{
+        ClanDTO cl=new ClanDTO(clanDTO.getName(),clanDTO.getSurname(),clanDTO.getUsername(),clanDTO.getPassword(),clanDTO.getEmail(),
+                clanDTO.getPhone(),clanDTO.getBirthday(),clanDTO.getVrati(),clanDTO.isActive());
 
-        Clan clan1=new Clan();
+        List<Clan> clanList = clanService.findAll();
+        for(Clan clan : clanList) {
+            if(clan.getUsername().equalsIgnoreCase(cl.getUsername())) {
+                ClanDTO vrati = new ClanDTO("","","","","","",clan.getBirthday(),1,false);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+            if(clan.getEmail().equalsIgnoreCase(cl.getEmail())) {
+                ClanDTO vrati = new ClanDTO("","","","","","",clan.getBirthday(),2,false);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+            if(clan.getPhone().equalsIgnoreCase(cl.getPhone())) {
+                ClanDTO vrati = new ClanDTO("","","","","","",clan.getBirthday(),3,false);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+
+        }
+
+        ClanDTO clan1=new ClanDTO();
         clan1.setEmail(cl.getEmail());
         clan1.setBirthday(cl.getBirthday());
         clan1.setUsername(cl.getUsername());
@@ -32,12 +52,23 @@ public class ClanController {
         clan1.setName(cl.getName());
         clan1.setPassword(cl.getPassword());
         clan1.setPhone(cl.getPhone());
+         clan1.setVrati(cl.getVrati());
         clan1.setActive(true);
 
+        //clana cuvam
+        Clan clan2=new Clan();
+        clan2.setEmail(cl.getEmail());
+        clan2.setBirthday(cl.getBirthday());
+        clan2.setUsername(cl.getUsername());
+        clan2.setSurname(cl.getSurname());
+        clan2.setName(cl.getName());
+        clan2.setPassword(cl.getPassword());
+        clan2.setPhone(cl.getPhone());
+        clan2.setActive(true);
 
-        Clan noviClan= clanService.createClan(clan1);
+        Clan noviClan= clanService.createClan(clan2);
 
-        return new ResponseEntity<Clan>(noviClan,HttpStatus.CREATED);
+        return new ResponseEntity<ClanDTO>(clan1,HttpStatus.CREATED);
     }
 
     //brisanje clana

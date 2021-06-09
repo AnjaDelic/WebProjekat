@@ -6,8 +6,10 @@ public class TrenerDTO {
 
     String name,surname,username,password,email,phone;
     Date birthday;
+    int vrati;
 
-    public TrenerDTO(String name, String surname, String username, String password, String email, String phone, Date birthday) {
+    public TrenerDTO(){}
+    public TrenerDTO(String name, String surname, String username, String password, String email, String phone, Date birthday,int vrati) {
         this.name = name;
         this.surname = surname;
         this.username = username;
@@ -15,6 +17,15 @@ public class TrenerDTO {
         this.email = email;
         this.phone = phone;
         this.birthday = birthday;
+        this.vrati=vrati;
+    }
+
+    public int getVrati() {
+        return vrati;
+    }
+
+    public void setVrati(int vrati) {
+        this.vrati = vrati;
     }
 
     public String getName() {

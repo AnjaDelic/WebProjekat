@@ -11,12 +11,16 @@ $(document).on("submit", "#signup", function (event) {
     let email = $("#inputEmail4").val();
     let phone = $("#inputNumber").val();
     let uloga = document.forms['signup'].uloga.value;
+    let vrati= 0;
     //pravim objekat koji cu proslediti na backend
     //NAZIVI DA SE POKLAPAJU
     if (password !== passwordREP) {
         $('.alert-danger').show();
         return;
     }
+
+  
+    
     let noviKorisnik = {
         name,
         surname,
@@ -24,7 +28,8 @@ $(document).on("submit", "#signup", function (event) {
         password,
         email,
         phone,
-        birthday
+        birthday,
+        vrati
     }
 
 
@@ -38,11 +43,17 @@ $(document).on("submit", "#signup", function (event) {
             data: JSON.stringify(noviKorisnik),                                //  pretvara JavaScript objekat u JSON
             success: function (response) {
                 console.log(response);
+                if(response.vrati===0){
+                    alert("CESTITAMO:Vasa registracija je primljena! Nakon sto administrator odobri Vas zahtev imacete pristup sajtu");
+                }
+                else {
+                    alert("Greska!");
+                }
+                
                 localStorage.setItem('uloga','1');
                 var index=response.id;
                 localStorage.setItem('id',index);
 
-                alert("CESTITAMO:Vasa registracija je primljena! Nakon sto administrator odobri Vas zahtev imacete pristup sajtu");
                 window.location.href="index.html";
 
             },
@@ -61,7 +72,14 @@ $(document).on("submit", "#signup", function (event) {
             data: JSON.stringify(noviKorisnik),                                //  pretvara JavaScript objekat u JSON
             success: function (response) {
                 console.log(response);
-                alert("Uspešno ste se registrovali!");
+
+                if(response.vrati===0){
+                    alert("Uspešno ste se registrovali!");
+                }
+                else {
+                    alert("Greska!");
+                }
+                
                 localStorage.setItem('uloga','2');
                 var index=response.id;
                 localStorage.setItem('id',index);
@@ -76,10 +94,6 @@ $(document).on("submit", "#signup", function (event) {
 
 
     }
-
-
-
-
 
 });
 

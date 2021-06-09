@@ -31,8 +31,8 @@ $(document).ready(function () {
 $(document).on("submit", "#sviTreninzi", function (event) {  
     event.preventDefault(); 
 
-    let clear=$("#treninzi");
-    clear.hide();
+   let clear=$("#treninzi2");
+    clear.empty();
 
     naziv = document.forms['tr'].inputNaziv.value;
    
@@ -54,9 +54,9 @@ $(document).on("submit", "#sviTreninzi", function (event) {
 
     if(trajanje==="" || isNaN(trajanje)){ trajanje=90000;}
 
-    if(pocetak ===""){pocetak="2200-12-12";}
+    if(kraj ===""){kraj="2025-09-09";}
    
-    if(kraj===""){kraj="2200-22-22";}
+    if(pocetak===""){pocetak="2000-09-09";}
     
 
     

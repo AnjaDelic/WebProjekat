@@ -74,4 +74,17 @@ public class TreningDTO {
     public void setKraj(Date kraj) {
         this.kraj = kraj;
     }
+
+    @Override
+    public String toString() {
+        return "TreningDTO{" +
+                "naziv='" + naziv + '\'' +
+                ", tip='" + tip + '\'' +
+                ", opis='" + opis + '\'' +
+                ", cena=" + cena +
+                ", trajanje=" + trajanje +
+                ", pocetak=" + pocetak +
+                ", kraj=" + kraj +
+                '}';
+    }
 }

@@ -47,7 +47,7 @@ $(document).on("submit", "#signup", function (event) {
                     alert("CESTITAMO:Vasa registracija je primljena! Nakon sto administrator odobri Vas zahtev imacete pristup sajtu");
                 }
                 else {
-                    alert("Greska!");
+                    alert("Greska prilikom unosa podataka!"); //posle komita sam samo promenila ovu poruku
                 }
                 
                 localStorage.setItem('uloga','1');

@@ -10,6 +10,7 @@ $(document).ready(function () {
     }
     if(uloga == 1){ //trener
         alert("Nemate pristup ovoj stranici !");
+        window.location.href = "index.html";
         //window.location.href = "trener.html";
         
     }

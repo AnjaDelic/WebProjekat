@@ -24,6 +24,7 @@ public class AdministratorController {
             return new ResponseEntity<>( HttpStatus.NOT_FOUND);
         }
 
+
         return new ResponseEntity<Administrator>(admin, HttpStatus.OK);
     }
 

@@ -36,7 +36,7 @@ $(document).on("submit", "form", function (event) {
                 
             },
             error: function (res) { 
-                console.log(response);                               
+               // console.log(response); POSLE KOMITA SAM SAMO OVO ZAKOMENTARISALA
                 alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
             }
         });
@@ -62,7 +62,7 @@ $(document).on("submit", "form", function (event) {
              
          },
          error: function (res) { 
-            console.log(response);                               
+           // console.log(response);                               
              alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
          }
      });
@@ -93,7 +93,7 @@ $(document).on("submit", "form", function (event) {
                 
             },
             error: function (res) { 
-                console.log(response);                             
+               // console.log(response);                             
                 alert("ERROR:Molimo proverite da li su podaci koje ste uneli validni");
             }
         });

@@ -45,6 +45,14 @@ public class TrenerController {
         return new ResponseEntity<>(trener1, HttpStatus.OK);
     }
 
+    @GetMapping (value = "/sviTR",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Trener>> sviTR() {
+        List<Trener> lista = this.trenerService.findAll();
+
+        return new ResponseEntity<>(lista,HttpStatus.OK);
+
+    }
+
 
     //dodavanje trenera
     @PostMapping(value = "/post", produces=MediaType.APPLICATION_JSON_VALUE)

@@ -25,6 +25,15 @@ public class TrenerService {
         return  noviTrener;
     }
 
+    public Trener createTrenerAdmin(Trener tr) throws Exception {
+        if (tr.getId()!=null)
+        {
+            throw new Exception("ID must be null");
+        }
+        Trener noviTrener=this.trenerRepository.save(tr);
+        return  noviTrener;
+    }
+
     public void deleteTrener(Long id)
     {
         this.trenerRepository.deleteById(id);

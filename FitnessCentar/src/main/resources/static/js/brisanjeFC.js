@@ -35,7 +35,7 @@ $(document).ready(function () {
                 row += "<td>" + fc.broj + "</td>";
                 row += "<td>" + fc.email + "</td>";
              
-                let btn = "<button class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
+                let btn = "<button class='btn-danger' data-id=" + fc.id + ">Obrisi</button>";
                 row += "<td>" + btn + "</td>";                      
         
                 row += "</tr>";                                     
@@ -47,4 +47,28 @@ $(document).ready(function () {
             console.log("ERROR:\n", response);
         }
     });
+});
+
+$(document).on('click', '.btn-danger', function () {
+
+    let id=this.dataset.id;
+
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/api/FC/delete/" + id ,
+        data: JSON.stringify(id),
+        success: function (response) {
+            console.log("SUCCESS:\n", response);
+            alert("Uspeh");
+            $('[data-id="' + id + '"]').parent().parent().remove();
+
+        },
+        error: function (response) {
+            console.log("ERROR:\n", response);
+            alert("Greska");
+        }
+
+    });
+
+
 });

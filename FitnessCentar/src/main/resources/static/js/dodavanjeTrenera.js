@@ -56,24 +56,21 @@ $(document).on("submit", "#dodavanjeTrenera", function (event) {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/trener/post",                 
+        url: "http://localhost:8080/api/trener/postAdmin",
         dataType: "json",                                           
         contentType: "application/json",                           
         data: JSON.stringify(noviKorisnik),                               
         success: function (response) {
             console.log(response);
             if(response.vrati===0){
-                alert("CESTITAMO:Vasa registracija je primljena! Nakon sto administrator odobri Vas zahtev imacete pristup sajtu");
+                alert("CESTITAMO:Vasa registracija je primljena! ");
             }
             else {
                 alert("Greska prilikom unosa podataka!"); 
             }
             
-            localStorage.setItem('uloga','1'); //dodajemo trenera
-            var index=response.id;
-            localStorage.setItem('id',index);
+            window.href="admin.html";
 
-            window.location.href="admin.html";
 
         },
         error: function () {

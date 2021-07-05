@@ -9,6 +9,7 @@ public class ClanDTO {
     int vrati;
     boolean active;
 
+
     public ClanDTO(){}
     public ClanDTO(String name, String surname, String username, String password, String email, String phone, Date birthday,int vrati,boolean active) {
         this.name = name;

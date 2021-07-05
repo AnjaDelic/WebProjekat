@@ -56,9 +56,8 @@ public class Clan implements Serializable {
 		
 	}
 
-	public Clan(String username, String password, String name, String surname, String phone, String email,
-			Date birthday, boolean active) {
-		super();
+	public Clan(Long id, String username, String password, String name, String surname, String phone, String email, Date birthday, boolean active) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -68,11 +67,6 @@ public class Clan implements Serializable {
 		this.birthday = birthday;
 		this.active = active;
 	}
-
-
-
-
-
 
 	public Long getId() {
 		return id;

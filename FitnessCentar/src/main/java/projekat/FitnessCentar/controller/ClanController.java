@@ -82,16 +82,45 @@ public class ClanController {
 
     //izmena clan
     @PutMapping(value = "/put/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Clan> updateClan(@PathVariable Long id, @RequestBody Clan c) throws Exception
+    public ResponseEntity<ClanDTO> updateClan(@PathVariable Long id, @RequestBody ClanDTO clanDTO) throws Exception
     {
-        Clan clan = new Clan(c.getUsername(),c.getPassword(),c.getName(),c.getSurname(),c.getPhone(),c.getEmail(),c.getBirthday(),c.isActive());
+        ClanDTO cl=new ClanDTO(clanDTO.getName(),clanDTO.getSurname(),clanDTO.getUsername(),clanDTO.getPassword(),clanDTO.getEmail(),
+                clanDTO.getPhone(),clanDTO.getBirthday(),clanDTO.getVrati(),clanDTO.isActive());
+
+        List<Clan> clanList = clanService.findAll();
+        for(Clan clan : clanList) {
+            if(clan.getUsername().equalsIgnoreCase(cl.getUsername())) {
+                ClanDTO vrati = new ClanDTO("","","","","","",clan.getBirthday(),1,false);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+            if(clan.getEmail().equalsIgnoreCase(cl.getEmail())) {
+                ClanDTO vrati = new ClanDTO("","","","","","",clan.getBirthday(),2,false);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+            if(clan.getPhone().equalsIgnoreCase(cl.getPhone())) {
+                ClanDTO vrati = new ClanDTO("","","","","","",clan.getBirthday(),3,false);
+                return new ResponseEntity<>(vrati, HttpStatus.CREATED);
+            }
+
+        }
+
+        Clan clan2=new Clan();
+        clan2.setId(id);
+        clan2.setEmail(cl.getEmail());
+        clan2.setBirthday(cl.getBirthday());
+        clan2.setUsername(cl.getUsername());
+        clan2.setSurname(cl.getSurname());
+        clan2.setName(cl.getName());
+        clan2.setPassword(cl.getPassword());
+        clan2.setPhone(cl.getPhone());
+        clan2.setActive(true);
+        Clan izmenjenclan= clanService.updateClan(clan2);
+
+        ClanDTO clan1=new ClanDTO(izmenjenclan.getName(),izmenjenclan.getSurname(),izmenjenclan.getUsername(), izmenjenclan.getPassword(), izmenjenclan.getEmail(), izmenjenclan.getPhone(),
+                izmenjenclan.getBirthday(),cl.getVrati(),true);
 
 
-        clan.setId(id); //proslednjen nam je njegov id
-
-        Clan izmenjenclan= clanService.updateClan(clan);
-
-        return new ResponseEntity<>(izmenjenclan,HttpStatus.OK);
+        return new ResponseEntity<>(clan1,HttpStatus.OK);
 
     }
     @PostMapping (value = "/login",produces = MediaType.APPLICATION_JSON_VALUE) //odgovara na post zahtev
@@ -118,5 +147,21 @@ public class ClanController {
 
 
         return new ResponseEntity<>(clan1, HttpStatus.OK);
+    }
+
+
+
+    @GetMapping (value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Clan> getClan(@PathVariable Long id) throws Exception {
+
+        Clan clan = this.clanService.findOneID(id);
+
+        Clan povratni= new Clan(clan.getId(),clan.getUsername(),clan.getPassword(),clan.getName(),
+                clan.getSurname(), clan.getPhone(), clan.getEmail(), clan.getBirthday(), clan.isActive());
+
+
+
+
+        return new ResponseEntity<>(povratni, HttpStatus.OK);
     }
 }

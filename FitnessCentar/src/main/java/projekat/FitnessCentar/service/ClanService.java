@@ -39,14 +39,17 @@ public class ClanService {
             throw new Exception("Ne postoji Clan");
         }
         //promena vrednosti
+
+        if(clan.getName()!=null){  probaClan.setName(clan.getName());}
+        if(clan.getBirthday()!=null){  probaClan.setBirthday(clan.getBirthday());}
+        if(clan.getEmail()!=null){  probaClan.setEmail(clan.getEmail());}
+        if(clan.getPhone()!=null){ probaClan.setPhone(clan.getPhone());}
+        if(clan.getSurname()!=null){ probaClan.setSurname(clan.getSurname());}
+        if(clan.getUsername()!=null){  probaClan.setUsername(clan.getUsername());}
+        if(clan.getPassword()!=null){ probaClan.setPassword(clan.getPassword());}
         probaClan.setActive(clan.isActive());
-        probaClan.setBirthday(clan.getBirthday());
-        probaClan.setEmail(clan.getEmail());
-        probaClan.setName(clan.getName());
-        probaClan.setPassword(clan.getPassword());
-        probaClan.setPhone(clan.getPhone());
-        probaClan.setSurname(clan.getSurname());
-        probaClan.setUsername(clan.getUsername());
+
+
 
         //cuvanje u bazu
         Clan izmenjenClan=this.clanRepository.save(probaClan);
@@ -59,6 +62,14 @@ public class ClanService {
     {
 
         Clan clan=clanRepository.findAClanByUsername(username);
+        return clan;
+
+    }
+
+    public Clan findOneID(Long id)
+    {
+
+        Clan clan=clanRepository.getOne(id);
         return clan;
 
     }

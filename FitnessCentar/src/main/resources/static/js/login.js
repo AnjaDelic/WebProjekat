@@ -66,7 +66,7 @@ $(document).on("submit", "form", function (event) {
              localStorage.setItem('uloga','2');
              var index=response.id;
              localStorage.setItem('id',index);
-             //window.location.href="clan.html";
+             window.location.href="clan.html";
              
          },
          error: function (res) { 

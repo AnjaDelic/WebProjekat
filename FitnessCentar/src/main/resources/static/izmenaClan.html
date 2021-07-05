@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clanska stranica</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/izmenaClan.js"></script>
+    
+    
+ 
+   
+
+
+
+<nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="clan.html" >AHILEJ</a>
+      </div>
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Treninzi <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Svi treninzi</a></li>
+            <li><a href="#">Prijavljeni treninzi</a></li>
+            <li><a href="#">Odradjeni treninzi</a></li>
+            
+          
+           
+          </ul>
+        </li>
+
+       
+          <li><a href="#">Treninzi koje mozete oceniti</a></li>
+        
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+       
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+          <button type="submit" class="logOut" >LogOUT</button> </a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <form class="modal-content" action="/action_page.php" id="forma" >
+    <div class="container">
+      <h1>Update your account</h1>
+      <p>Please fill in this form to change an account.</p>
+    
+      
+      <div class="ime">
+        <label for="inputName" class="form-label">Name</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Marry">
+      </div>
+
+      <div class="prezime">
+        <label for="inputSurname" class="form-label">Surname</label>
+        <input type="text" class="form-control" id="inputSurname" placeholder="Adams" >
+      </div>
+     
+      <div class="rodj">
+        <label for="rodjendan">Date of birth  </label>
+       <input type="date"
+              name="rodj"
+              id="rodjendan" >
+     </div>
+      
+     <br/>
+
+     <div class="username">
+        <label for="inputUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="inputUsername" placeholder="user123" >
+      </div>
+
+      <div class="pass">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword4" >
+      </div>
+      <label for="psw-repeat">Repeat Password</label>
+      <input type="password" placeholder="Repeat Password" id="psw-repeat" >
+      
+      <div class="alert alert-danger" role="alert" style="display: none;">
+        Passwords don't match!
+       </div>
+
+      <div class="email">
+        <label for="inputEmail4" class="form-label">Email</label> <br/>
+        <input type="email" class="form-control" 
+          id="inputEmail4"
+          style="background-color: rgba(238, 232, 232, 0.975)"
+          placeholder="name@gmail.com"
+         >
+      </div>
+      <br/>
+      
+      <div class="tel">
+        <label for="inputNumber" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="inputNumber"  placeholder="+381 64 4565543" >
+      </div>
+
+
+      <div class="clearfix">
+        <button type="submit" class="signupbtn" id="button"> <b> Izmeni </b> </button>
+      </div>
+    </div>
+  </form>
+
+  
+
+    </head>
+    <body>

@@ -11,6 +11,7 @@
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/sviFC.js"></script>
     <script src="js/logOut.js"></script>
+    <script src="js/detailsFC.js"></script>
     
  
    
@@ -29,18 +30,12 @@
           <ul class="dropdown-menu">
             <li><a href="dodavanjeFC.html">Dodavanje FC</a></li>
             <li><a href="brisanjeFC.html">Brisanje FC</a></li>
-            <li><a href="#">Izmena FC</a></li>
+          
            
           </ul>
         </li>
         
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sale<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Dodavanje</a></li>
-            <li><a href="#">Brisanje </a></li>
-            <li><a href="#">Izmena </a></li>
-          </ul>
-        </li>
+        
          
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Treneri <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -66,12 +61,13 @@
   <br/>
   <br/>
  
-<div class="bg-text">
+<div class="bg-text" id="svi">
   <h4>Uspesno ste se prijavili kao admin!</h4>
   <h1 style="font-size:60px ">WELCOME TO AHILEJ</h1>
   <br/>
   <p><i style="bottom: auto;"> SVI FITNESS CENTRI:</i></p>
-</div>
+  <small> <i> Za izmenu FC i pregled sali kliknite SeeMore</i></small>
+
   
 <table class="table table-dark" id="fcs">
   <thead>
@@ -85,9 +81,48 @@
     </tr>
   </thead>
 
+</table>
+</div>
+<div id="details" hidden> 
+<table class="table table-dark" id="fcs1">
+  <thead>
+    <tr>
+    
+      <th >Naziv</th>
+      <th >Adresa</th>
+      <th >Broj</th>
+      <th >Email</th>
+      <th >Izmeni FC</th>
+      <br/>
+      <th >Dodaj novu salu</th>
+
+    </tr>
+  </thead>
+
 
 </table>
 
+<br/>
+<table class="table table-dark" id="sale">
+    <thead>
 
+      <tr>
+        
+        <br/>
+        <th >Kapacitet</th>
+        <th >Oznaka</th>
+        <th >Izmeni salu</th>
+        <th >Broj prijavljenih</th>
+        <th >Obrisi salu</th>
+        <th ></th>
+       
+        
+        
+      </tr>
+    </thead>
+  
+  
+  </table>
+</div> 
 </body>
 </html>

@@ -86,17 +86,19 @@ public class FC implements Serializable{
 		this.email = email;
 	}
 
-	
+	public Set<Trener> getTreneri() {
+		return treneri;
+	}
 
-	
+	public void setTreneri(Set<Trener> treneri) {
+		this.treneri = treneri;
+	}
 
+	public Set<Sala> getSale() {
+		return sale;
+	}
 
-	
-	
-	
-	
-	
-	
-	
-	
+	public void setSale(Set<Sala> sale) {
+		this.sale = sale;
+	}
 }

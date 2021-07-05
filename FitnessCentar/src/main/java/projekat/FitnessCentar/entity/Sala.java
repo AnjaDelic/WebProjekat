@@ -40,7 +40,12 @@ public class Sala implements Serializable {
 	
 	
 	public Sala() {
-		// TODO Auto-generated constructor stub
+
+	}
+
+	public Sala(int kapacitet, String oznaka) {
+		this.kapacitet = kapacitet;
+		this.oznaka = oznaka;
 	}
 
 	public Long getId() {
@@ -98,6 +103,11 @@ public class Sala implements Serializable {
 	}
 
 
+	public FC getFitness_centar() {
+		return fitness_centar;
+	}
 
-	
+	public void setFitness_centar(FC fitness_centar) {
+		this.fitness_centar = fitness_centar;
+	}
 }

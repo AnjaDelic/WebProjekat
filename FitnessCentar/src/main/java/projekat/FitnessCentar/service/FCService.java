@@ -35,20 +35,24 @@ public class FCService {
 
     public FC updateFC(FC fitnesscentar) throws Exception {
 
-        FC probafitnesscentar = this.fcRepository.getOne(fitnesscentar.getId()); //dobavljamo tog zaposlenog
+        FC probafitnesscentar = this.fcRepository.getOne(fitnesscentar.getId());
 
         if(probafitnesscentar==null) //provera da li u bazi postoji takav fc
         {
             throw new Exception("Ne postoji FC");
         }
         //promena vrednosti
-        probafitnesscentar.setAdresa(fitnesscentar.getAdresa());
-        probafitnesscentar.setEmail(fitnesscentar.getEmail());
-        probafitnesscentar.setBroj(fitnesscentar.getBroj());
-        probafitnesscentar.setNaziv(fitnesscentar.getNaziv());
+        if(fitnesscentar.getNaziv()!=null){ probafitnesscentar.setNaziv(fitnesscentar.getNaziv());}
+        if(fitnesscentar.getAdresa()!=null){probafitnesscentar.setAdresa(fitnesscentar.getAdresa());}
+        if(fitnesscentar.getEmail()!=null){probafitnesscentar.setEmail(fitnesscentar.getEmail());}
+        if(fitnesscentar.getBroj()!=null){probafitnesscentar.setBroj(fitnesscentar.getBroj());}
+
+
 
         //cuvanje u bazu
         FC izmenjenfitnesscentar=this.fcRepository.save(probafitnesscentar);
+
+
         return izmenjenfitnesscentar;
 
 

@@ -5,10 +5,11 @@ $(document).on("submit", "form", function (event) {
     let username = document.forms['loginform'].username.value;
     let password = document.forms['loginform'].password.value;
     let uloga = document.forms['loginform'].uloga.value;
-
+    
     let prijava = {
         username,
         password,
+        
        
     }
 
@@ -27,12 +28,19 @@ $(document).on("submit", "form", function (event) {
             data: JSON.stringify(prijava),                          
             success: function (response) {                                   
                 console.log(response);
-            
+               
+                if(response.active==false){
+                    alert("Nije vam jos odobren profil");
+                    window.location.href="index.html";
+                }
+                else{
+
                 alert("Uspešna prijava!");
                 localStorage.setItem('uloga','1');
                 var index=response.id;
                 localStorage.setItem('id',index);
                 //window.location.href="trener.html";
+                    }
                 
             },
             error: function (res) { 

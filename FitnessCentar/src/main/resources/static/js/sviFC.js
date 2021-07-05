@@ -35,7 +35,7 @@ $(document).ready(function () {
                 row += "<td>" + fc.broj + "</td>";
                 row += "<td>" + fc.email + "</td>";
              
-                let btn = "<button class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
+                let btn = "<button  class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
                 row += "<td>" + btn + "</td>";                      
         
                 row += "</tr>";                                     
@@ -48,3 +48,6 @@ $(document).ready(function () {
         }
     });
 });
+
+
+

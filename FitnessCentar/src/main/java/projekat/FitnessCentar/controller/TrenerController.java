@@ -26,9 +26,9 @@ public class TrenerController {
 
         if(tr==null)
         {
-            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
-        }
 
+            return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+        }
 
         Trener trener1=new Trener();
         trener1.setEmail(tr.getEmail());
@@ -42,7 +42,8 @@ public class TrenerController {
         trener1.setPhone(tr.getPhone());
         trener1.setProsek(tr.getProsek());
 
-        return new ResponseEntity<>(trener1, HttpStatus.OK);
+
+        return new ResponseEntity<>(trener1, HttpStatus.ACCEPTED);
     }
 
     @GetMapping (value = "/sviTR",produces = MediaType.APPLICATION_JSON_VALUE)

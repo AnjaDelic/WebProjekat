@@ -8,10 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import projekat.FitnessCentar.entity.FC;
 import projekat.FitnessCentar.entity.FCDTO;
+import projekat.FitnessCentar.entity.Sala;
+import projekat.FitnessCentar.entity.SalaDTO;
 import projekat.FitnessCentar.service.FCService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/api/FC")
@@ -20,8 +23,8 @@ public class FCController {
     private FCService fcService;
 
     @GetMapping (value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<FC> getFC(@PathVariable("id") Long id) {
-        // Pozivanjem metode servisa dobavljamo zaposlenog po ID-ju
+    public ResponseEntity<FC> getFC(@PathVariable Long id) throws Exception {
+
         FC fc = this.fcService.findOne(id);
 
         FC fitnesscentar = new FC();
@@ -33,6 +36,24 @@ public class FCController {
 
 
         return new ResponseEntity<>(fitnesscentar, HttpStatus.OK);
+    }
+
+    @GetMapping (value = "/getSale/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<SalaDTO>> getSale(@PathVariable Long id) throws Exception{
+
+        FC fc = this.fcService.findOne(id);
+        Set<Sala>sale= fc.getSale();
+        List<SalaDTO> salaList=new ArrayList<>();
+        for (Sala s:sale)
+        {
+            SalaDTO jedan=new SalaDTO(s.getOznaka(),s.getKapacitet(),s.getBroj(),s.getId());
+            salaList.add(jedan);
+        }
+
+
+
+
+        return new ResponseEntity<>(salaList, HttpStatus.OK);
     }
 
 
@@ -59,14 +80,14 @@ public class FCController {
 
     //izmena FC
     @PutMapping(value = "/put/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<FC> updateFC(@PathVariable Long id, @RequestBody FC fc) throws Exception
+    public ResponseEntity<FCDTO> updateFC(@PathVariable Long id, @RequestBody FC fc) throws Exception
     {
         FC fitnesscentar = new FC(fc.getNaziv(),fc.getAdresa(),fc.getBroj(),fc.getEmail());
         fitnesscentar.setId(id); //proslednjen nam je njegov id
 
         FC izmenjenfitnesscentar= fcService.updateFC(fitnesscentar);
-
-        return new ResponseEntity<>(izmenjenfitnesscentar,HttpStatus.OK);
+        FCDTO povratni =new FCDTO(izmenjenfitnesscentar.getNaziv(),izmenjenfitnesscentar.getAdresa(),izmenjenfitnesscentar.getBroj(),izmenjenfitnesscentar.getEmail(),izmenjenfitnesscentar.getId());
+        return new ResponseEntity<>(povratni,HttpStatus.OK);
 
     }
 

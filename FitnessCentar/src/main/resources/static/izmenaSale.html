@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Dodavanje FC</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/dodajFC.js"></script>
+    <script src="js/izmenaSale.js"></script>
+ 
+    <script src="js/logOut.js"></script>
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="admin.html" >AHILEJ</a>
+          </div>
+          <ul class="nav navbar-nav">
+            
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Fitness Centar <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="dodavanjeFC.html">Dodavanje FC</a></li>
+                <li><a href="brisanjeFC.html">Brisanje FC</a></li>
+              
+               
+              </ul>
+            </li>
+            
+            
+             
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Treneri <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="odobravanje.html">Zahtevi</a></li>
+                <li><a href="brisanjeTrenera.html">Brisanje</a></li>
+                <li><a href="dodavanjeTrenera.html">Dodavanje</a></li>
+                
+              </ul>
+            </li>
+           
+              <li><a href="treninzi.html">Treninzi</a></li>
+            
+          </ul>
+    
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+              <button type="submit" class="logOut" >LogOUT</button> </a></li>
+          </ul>
+        </div>
+      </nav>
+
+<form id="izmenaSale" >
+    <p>
+        <label for="kapacitet">Kapacitet:</label>
+        <input id="kapacitet" type="text"  /><br>
+    </p>
+    <p>
+        <label for="oznaka">Oznaka:</label>
+        <input id="oznaka" type="text"  /><br>
+    </p>
+   
+
+    </p>
+
+    <button type="submit"  class="signupbtn">  Izmeni</button>
+</form>
+
+
+
+</body>
+</html>

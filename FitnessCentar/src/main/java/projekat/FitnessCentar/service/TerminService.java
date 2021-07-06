@@ -2,10 +2,7 @@ package projekat.FitnessCentar.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import projekat.FitnessCentar.entity.Termin;
-import projekat.FitnessCentar.entity.TrenerDTO;
-import projekat.FitnessCentar.entity.TreningDTO;
-import projekat.FitnessCentar.entity.TreningDTOPretraga;
+import projekat.FitnessCentar.entity.*;
 import projekat.FitnessCentar.repository.TerminRepository;
 
 import java.util.ArrayList;
@@ -19,6 +16,14 @@ public class TerminService {
     public List<Termin> findAll() {
         List<Termin> termini = this.terminRepository.findAll();
         return termini;
+    }
+
+    public Termin findOneID(Long id)
+    {
+
+        Termin clan=terminRepository.getOne(id);
+        return clan;
+
     }
 
 
@@ -117,6 +122,33 @@ public class TerminService {
 
 
        return poKraj;
+    }
+
+
+    public Termin updateTermin(Termin termin) throws Exception {
+
+        Termin ispravljenT = this.terminRepository.getOne(termin.getId()); //dobavljamo tog zaposlenog
+
+        if (ispravljenT == null) //provera da li u bazi postoji takav fc
+        {
+            throw new Exception("Ne postoji Clan");
+        }
+
+
+        ispravljenT.setOcene(termin.getOcene());
+        ispravljenT.setOceniliClanovi(termin.getOceniliClanovi());
+        ispravljenT.setOdradiliClanovi(termin.getOdradiliClanovi());
+        ispravljenT.setSala(termin.getSala());
+        ispravljenT.setTrener(termin.getTrener());
+        ispravljenT.setPrijaviliClanovi(termin.getPrijaviliClanovi());
+        ispravljenT.setCena(termin.getCena());
+        ispravljenT.setKraj(termin.getKraj());
+        ispravljenT.setPocetak(termin.getPocetak());
+        ispravljenT.setTrening(termin.getTrening());
+
+        //cuvanje u bazu
+        Termin izmenjen=this.terminRepository.save(ispravljenT);
+        return izmenjen;
     }
 
 }

@@ -11,8 +11,8 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="js/profilClan.js"></script>
-    <script src="js/izmenaClan.js"></script>
+    <script src="js/odradjeniTreninzi.js"></script>
+ 
     
     
  
@@ -32,13 +32,9 @@
             <li><a href="#">Svi treninzi</a></li>
             <li><a href="#">Prijavljeni treninzi</a></li>
             <li><a href="odradjeniTreninzi.html">Odradjeni treninzi</a></li>
-            
-          
-           
+ 
           </ul>
-        </li>
-
-       
+        </li>       
           <li><a href="#">Treninzi koje mozete oceniti</a></li>
         
       </ul>
@@ -51,33 +47,46 @@
     </div>
   </nav>
 
-  <div class="bg-text" id="profil">
-  <h4>Uspesno ste se prijavili kao clan!</h4>
-  <h1 style="font-size:60px ">WELCOME TO AHILEJ</h1>
-  <br/>
-  <h2 style="text-align:center">Vas profil</h2>
   
-  <table class="table table-dark" id="tabela" >
-    <thead>
-      <tr>
-        
-        <th >Ime</th>
-        <th >Prezime</th>
-        <th >Username</th>
-        <th >Email</th>
-        <th >Phone</th>
-        <th >Birthday</th>
-        <th >Password</th>
-        <th >Izmeni</th>
+  <div id="sviTreninzi">
+    <form id="tr">
+    <h1>Odradjeni treninzi</h1>
+    <div class="form-group col-md-4">
+        <label for="inputOcena">Filter</label>
+        <select id="inputOcena" class="form-control">
+          <option selected value="svi"> Izaberite...</option>
+          <option >ocenjeni</option>
+          <option >neocenjeni</option>
+        </select>
+    </div>
+  
+      <button type="submit" class="btn btn-primary">Filtriraj</button>
 
-      </tr>
-    </thead>
-  
-  </table>
+   </form>
 </div>
+  <div>
+    <table class="table table-dark" id="odradjeni">
+        <thead>
+          <tr>
+            
+            <th >Naziv</th>
+            <th >Opis</th>
+            <th >Tip</th>
+            <th > Trajanje(min)</th>
+            <th >Cena</th>
+            <th >Pocetak</th>
+            <th >Kraj</th>
+            
+          </tr>
+        </thead>
+        <tbody id="treninzi2">
 
+        </tbody>  
+      </table>
+  </div>
 
   
+
 
     </head>
     <body>

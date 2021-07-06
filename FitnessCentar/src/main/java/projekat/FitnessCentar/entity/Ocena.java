@@ -28,6 +28,13 @@ public class Ocena implements Serializable {
 		
 	}
 
+	public Ocena( Clan clan, Termin termin) {
+
+
+		this.clan = clan;
+		this.termin = termin;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -43,10 +50,20 @@ public class Ocena implements Serializable {
 	public void setOcena(double ocena) {
 		this.ocena = ocena;
 	}
-	
-	
-	
-	
-	
 
+	public Clan getClan() {
+		return clan;
+	}
+
+	public void setClan(Clan clan) {
+		this.clan = clan;
+	}
+
+	public Termin getTermin() {
+		return termin;
+	}
+
+	public void setTermin(Termin termin) {
+		this.termin = termin;
+	}
 }

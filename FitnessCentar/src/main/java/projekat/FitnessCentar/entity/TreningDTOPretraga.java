@@ -5,19 +5,21 @@ import java.util.Date;
 public class TreningDTOPretraga {
 
     String naziv,tip,opis;
-    int cena,kriterijum;
+    int cena;
     double trajanje;
     Date pocetak,kraj ;
+    Long id;
 
-    public TreningDTOPretraga(String naziv, String tip, String opis, int cena, int kriterijum, double trajanje, Date pocetak, Date kraj) {
+
+    public TreningDTOPretraga(String naziv, String tip, String opis, int cena,  double trajanje, Date pocetak, Date kraj,Long id) {
         this.naziv = naziv;
         this.tip = tip;
         this.opis = opis;
         this.cena = cena;
-        this.kriterijum = kriterijum;
         this.trajanje = trajanje;
         this.pocetak = pocetak;
         this.kraj = kraj;
+        this.id=id;
     }
 
     public String getNaziv() {
@@ -52,13 +54,6 @@ public class TreningDTOPretraga {
         this.cena = cena;
     }
 
-    public int getKriterijum() {
-        return kriterijum;
-    }
-
-    public void setKriterijum(int kriterijum) {
-        this.kriterijum = kriterijum;
-    }
 
     public double getTrajanje() {
         return trajanje;
@@ -82,5 +77,13 @@ public class TreningDTOPretraga {
 
     public void setKraj(Date kraj) {
         this.kraj = kraj;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

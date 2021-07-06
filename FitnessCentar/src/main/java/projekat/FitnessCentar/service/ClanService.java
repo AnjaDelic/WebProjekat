@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import projekat.FitnessCentar.entity.Administrator;
 import projekat.FitnessCentar.entity.Clan;
 import projekat.FitnessCentar.entity.FC;
+import projekat.FitnessCentar.entity.Ocena;
 import projekat.FitnessCentar.repository.ClanRepository;
 
 import java.util.List;
@@ -47,6 +48,11 @@ public class ClanService {
         if(clan.getSurname()!=null){ probaClan.setSurname(clan.getSurname());}
         if(clan.getUsername()!=null){  probaClan.setUsername(clan.getUsername());}
         if(clan.getPassword()!=null){ probaClan.setPassword(clan.getPassword());}
+        if(clan.getOcenjeniTermini()!=null){probaClan.setOcenjeniTermini(clan.getOcenjeniTermini());}
+        if(clan.getOdradjeniTermini()!=null){probaClan.setOdradjeniTermini(clan.getOdradjeniTermini());}
+        if(clan.getPrijavljeniTermini()!=null){probaClan.setPrijavljeniTermini(clan.getPrijavljeniTermini());}
+        if(clan.getOcene()!=null){probaClan.setOcene(clan.getOcene());}
+
         probaClan.setActive(clan.isActive());
 
 
@@ -85,5 +91,7 @@ public class ClanService {
         return clanovi;
 
     }
+
+
 
 }

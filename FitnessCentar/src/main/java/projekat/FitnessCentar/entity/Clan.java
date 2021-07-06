@@ -51,28 +51,27 @@ public class Clan implements Serializable {
 
 	 @ManyToMany(mappedBy = "odradiliClanovi")
 	    private Set<Termin> odradjeniTermini = new HashSet<>();
-	
+
+	@ManyToMany(mappedBy = "oceniliClanovi")
+	 private Set<Termin> ocenjeniTermini=new HashSet<>();
+
 	public Clan() {
 		
 	}
 
-	public Clan(Long id, String username, String password, String name, String surname, String phone, String email, Date birthday, boolean active) {
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.surname = surname;
-		this.phone = phone;
-		this.email = email;
-		this.birthday = birthday;
-		this.active = active;
-	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+	public Set<Termin> getOcenjeniTermini() {
+		return ocenjeniTermini;
+	}
 
+	public void setOcenjeniTermini(Set<Termin> ocenjeniTermini) {
+		this.ocenjeniTermini = ocenjeniTermini;
+	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -173,7 +172,28 @@ public class Clan implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
-	
 
+	public Set<Ocena> getOcene() {
+		return ocene;
+	}
+
+	public void setOcene(Set<Ocena> ocene) {
+		this.ocene = ocene;
+	}
+
+	public Set<Termin> getPrijavljeniTermini() {
+		return prijavljeniTermini;
+	}
+
+	public void setPrijavljeniTermini(Set<Termin> prijavljeniTermini) {
+		this.prijavljeniTermini = prijavljeniTermini;
+	}
+
+	public Set<Termin> getOdradjeniTermini() {
+		return odradjeniTermini;
+	}
+
+	public void setOdradjeniTermini(Set<Termin> odradjeniTermini) {
+		this.odradjeniTermini = odradjeniTermini;
+	}
 }

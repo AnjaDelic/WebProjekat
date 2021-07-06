@@ -44,13 +44,19 @@ public class Termin  {
     @JoinTable(name = "prijavljeniTermini",
             joinColumns = @JoinColumn(name = "terminID", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "clanID", referencedColumnName = "id"))
-    private Set<Clan> prijaviliClanovi = new HashSet<>();
+    	private Set<Clan> prijaviliClanovi = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "odradjeniTermini",
             joinColumns = @JoinColumn(name = "terminID", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "clanID", referencedColumnName = "id"))
     private Set<Clan> odradiliClanovi = new HashSet<>();
+
+	@ManyToMany
+	@JoinTable(name = "ocenjeniTermini",
+			joinColumns = @JoinColumn(name = "terminID", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "clanID", referencedColumnName = "id"))
+	private Set<Clan> oceniliClanovi = new HashSet<>();
 	
 	@Column
 	private Date pocetak;
@@ -67,6 +73,46 @@ public class Termin  {
 	public Termin() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Set<Ocena> getOcene() {
+		return ocene;
+	}
+
+	public void setOcene(Set<Ocena> ocene) {
+		this.ocene = ocene;
+	}
+
+	public Trener getTrener() {
+		return trener;
+	}
+
+	public void setTrener(Trener trener) {
+		this.trener = trener;
+	}
+
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+	public Set<Clan> getPrijaviliClanovi() {
+		return prijaviliClanovi;
+	}
+
+	public void setPrijaviliClanovi(Set<Clan> prijaviliClanovi) {
+		this.prijaviliClanovi = prijaviliClanovi;
+	}
+
+	public Set<Clan> getOdradiliClanovi() {
+		return odradiliClanovi;
+	}
+
+	public void setOdradiliClanovi(Set<Clan> odradiliClanovi) {
+		this.odradiliClanovi = odradiliClanovi;
 	}
 
 	public Long getId() {
@@ -108,5 +154,13 @@ public class Termin  {
 
 	public void setTrening(Trening trening) {
 		this.trening = trening;
+	}
+
+	public Set<Clan> getOceniliClanovi() {
+		return oceniliClanovi;
+	}
+
+	public void setOceniliClanovi(Set<Clan> oceniliClanovi) {
+		this.oceniliClanovi = oceniliClanovi;
 	}
 }

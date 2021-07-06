@@ -6,13 +6,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import projekat.FitnessCentar.entity.Clan;
-import projekat.FitnessCentar.entity.ClanDTO;
-import projekat.FitnessCentar.entity.FC;
+import projekat.FitnessCentar.entity.*;
 import projekat.FitnessCentar.service.ClanService;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/api/Clan")
@@ -156,12 +156,24 @@ public class ClanController {
 
         Clan clan = this.clanService.findOneID(id);
 
-        Clan povratni= new Clan(clan.getId(),clan.getUsername(),clan.getPassword(),clan.getName(),
-                clan.getSurname(), clan.getPhone(), clan.getEmail(), clan.getBirthday(), clan.isActive());
+        Clan povratni= new Clan();
+
+        povratni.setUsername(clan.getUsername());
+        povratni.setEmail(clan.getEmail());
+        povratni.setName(clan.getName());
+        povratni.setPassword(clan.getPassword());
+        povratni.setActive( clan.isActive());
+        povratni.setSurname(clan.getSurname());
+        povratni.setPhone(clan.getPhone());
+        povratni.setBirthday(clan.getBirthday());
+
+
 
 
 
 
         return new ResponseEntity<>(povratni, HttpStatus.OK);
     }
+
+
 }

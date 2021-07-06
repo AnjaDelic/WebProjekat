@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adminska stranica</title>
+    <link rel="stylesheet" href="/css/ocena.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/ocena.js"></script>
+  
+    
+ 
+   
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="clan.html" >AHILEJ</a>
+          </div>
+          <ul class="nav navbar-nav">
+            
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Treninzi <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Svi treninzi</a></li>
+                <li><a href="#">Prijavljeni treninzi</a></li>
+                <li><a href="odradjeniTreninzi.html">Odradjeni treninzi</a></li>
+     
+              </ul>
+            </li>       
+              <li><a href="#">Treninzi koje mozete oceniti</a></li>
+            
+          </ul>
+    
+          <ul class="nav navbar-nav navbar-right">
+           
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+              <button type="submit" class="logOut" >LogOUT</button> </a></li>
+          </ul>
+        </div>
+      </nav>
+   
+  <br/>
+  <br/>
+ 
+<form id="z">
+  <div  class="star-rating">
+    <div class="thanks-msg">Thanks for your feedback !!!</div>
+    <div class="star-input" >
+       
+        <input type="radio" name="rating" id="rating-5" value="5">
+        <label for="rating-5" class="fas fa-star"></label>
+        <input type="radio" name="rating" id="rating-4"  value="4" >
+        <label for="rating-4" class="fas fa-star"></label>
+        <input type="radio" name="rating" id="rating-3"  value="3" >
+        <label for="rating-3" class="fas fa-star"></label>
+        <input type="radio" name="rating" id="rating-2"  value="2">
+        <label for="rating-2" class="fas fa-star"></label>
+        <input type="radio" name="rating" id="rating-1"  value="1" >
+        <label for="rating-1" class="fas fa-star"></label>
+       </form>
+        <!-- Rating Submit Form -->
+        <form >
+            <span class="rating-reaction"></span>
+            <button  type="submit" class="submit-rating">Submit</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

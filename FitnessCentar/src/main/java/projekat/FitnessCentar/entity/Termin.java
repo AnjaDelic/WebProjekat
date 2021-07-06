@@ -75,6 +75,7 @@ public class Termin  {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Set<Ocena> getOcene() {
 		return ocene;
 	}

@@ -15,7 +15,7 @@
 
    <script src="js/jquery.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="js/ocena.js"></script>
+    <script src="js/prijavljeniTreninzi.js"></script>
   
     
  
@@ -52,32 +52,28 @@
         </div>
       </nav>
    
+  
+  <h1>Prijavljeni treninzi</h1>
   <br/>
   <br/>
- 
-<form id="z">
-  <div  class="star-rating">
-    <div class="thanks-msg">Thanks for your feedback !!!</div>
-    <div class="star-input" >
-       
-        <input type="radio" name="rating" id="rating-5" value="5">
-        <label for="rating-5" class="fas fa-star"></label>
-        <input type="radio" name="rating" id="rating-4"  value="4" >
-        <label for="rating-4" class="fas fa-star"></label>
-        <input type="radio" name="rating" id="rating-3"  value="3" >
-        <label for="rating-3" class="fas fa-star"></label>
-        <input type="radio" name="rating" id="rating-2"  value="2">
-        <label for="rating-2" class="fas fa-star"></label>
-        <input type="radio" name="rating" id="rating-1"  value="1" >
-        <label for="rating-1" class="fas fa-star"></label>
-       </form>
-        <!-- Rating Submit Form -->
-        <form >
-            <span class="rating-reaction"></span>
-            <button  type="submit" class="submit-rating">Submit</button>
-        </form>
-    </div>
-</div>
+  <div>
+    <table class="table table-dark" id="prijavljeni">
+        <thead>
+          <tr>
+            
+            <th >Naziv</th>
+            <th >Opis</th>
+            <th >Tip</th>
+            <th > Trajanje(min)</th>
+            <th >Cena</th>
+            <th >Pocetak</th>
+            <th >Kraj</th>
+            
+          </tr>
+        </thead>
+         
+      </table>
+  </div>
 
 </body>
 </html>

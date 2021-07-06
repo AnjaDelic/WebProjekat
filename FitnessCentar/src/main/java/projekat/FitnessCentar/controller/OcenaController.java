@@ -69,7 +69,7 @@ public class OcenaController {
 
     }
 
-    @PostMapping(value = "/api/ocena/post")
+    @PutMapping (value = "/api/ocena/post")
     public ResponseEntity<OcenaDTO> update(@RequestBody OcenaDTO o) throws Exception{
         Clan clan=this.clanService.findOneID(o.getIdClan());
         Termin termin=this.terminService.findOneID(o.getIdTermin());

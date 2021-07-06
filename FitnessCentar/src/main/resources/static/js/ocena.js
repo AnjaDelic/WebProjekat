@@ -4,7 +4,8 @@ $(document).ready(function() {
     const starRating = document.querySelector(".star-input");
     // Success msg show/hide
     btn.onclick = () => {
-       
+      
+        
         
      ocene = document.forms['z'].rating.value;
   
@@ -29,19 +30,17 @@ $(document).ready(function() {
 
 
     $.ajax({
-        type: "POST",
+        type: "PUT",
         url: "http://localhost:8080/api/ocena/post",
         dataType: "json",                                           
         contentType: "application/json",                           
         data: JSON.stringify(novaOcena),                               
         success: function (response) {
             console.log(response);
-            starRating.style.display = "none";
-            thanksmsg.style.display = "table";
-       
+
             alert("Hvala na oceni i poverenju");
            window.location.href="clan.html"; 
-           
+           return ;
 
         },
         error: function () {
@@ -49,6 +48,10 @@ $(document).ready(function() {
        
         }
     });
+
+    starRating.style.display = "none";
+     thanksmsg.style.display = "table";
+    return false;
      
         
     };

@@ -3,15 +3,21 @@ package projekat.FitnessCentar.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projekat.FitnessCentar.entity.*;
+import projekat.FitnessCentar.repository.ClanRepository;
 import projekat.FitnessCentar.repository.TerminRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class TerminService {
     @Autowired
     private TerminRepository terminRepository;
+
+    @Autowired
+    private ClanRepository clanRepository;
 //
     public List<Termin> findAll() {
         List<Termin> termini = this.terminRepository.findAll();
@@ -127,9 +133,9 @@ public class TerminService {
 
     public Termin updateTermin(Termin termin) throws Exception {
 
-        Termin ispravljenT = this.terminRepository.getOne(termin.getId()); //dobavljamo tog zaposlenog
+        Termin ispravljenT = this.terminRepository.getOne(termin.getId());
 
-        if (ispravljenT == null) //provera da li u bazi postoji takav fc
+        if (ispravljenT == null) //provera da li u bazi postoji takav
         {
             throw new Exception("Ne postoji Clan");
         }
@@ -149,6 +155,71 @@ public class TerminService {
         //cuvanje u bazu
         Termin izmenjen=this.terminRepository.save(ispravljenT);
         return izmenjen;
+    }
+
+
+    public Termin izmeni(Clan clan,Termin termin) throws Exception {
+
+        Termin ispravljenT = this.terminRepository.getOne(termin.getId());
+
+        if (ispravljenT == null) //provera da li u bazi postoji takav
+        {
+            throw new Exception("Ne postoji Clan");
+        }
+
+        /*Set<Termin> clanSet=clan.getPrijavljeniTermini();
+        Set<Clan> terminSet=termin.getPrijaviliClanovi();
+
+        for(Termin tr:clanSet){
+            if(tr.getId().equals(ispravljenT.getId())){
+
+            clanSet.remove(tr);
+
+            }
+
+        }
+        for(Clan c:terminSet){
+            if(c.getId().equals(ispravljenT.getId())){
+
+                terminSet.remove(c);
+
+            }
+
+        }
+
+
+        Clan ispravljen=new Clan();
+        ispravljen.setId(clan.getId());
+        ispravljen.setActive(clan.isActive());
+        ispravljen.setUsername(clan.getUsername());
+        ispravljen.setSurname(clan.getSurname());
+        ispravljen.setPhone(clan.getPhone());
+        ispravljen.setPassword(clan.getPassword());
+        ispravljen.setOcenjeniTermini(clan.getOcenjeniTermini());
+        ispravljen.setOcene(clan.getOcene());
+        ispravljen.setName(clan.getName());
+        ispravljen.setOdradjeniTermini(clan.getOdradjeniTermini());
+        ispravljen.setPrijavljeniTermini(clanSet);
+        ispravljen.setEmail(clan.getEmail());
+
+        Termin ostaje=new Termin();
+
+        ostaje.setOcene(termin.getOcene());
+        ostaje.setOceniliClanovi(termin.getOceniliClanovi());
+        ostaje.setOdradiliClanovi(termin.getOdradiliClanovi());
+        ostaje.setSala(termin.getSala());
+        ostaje.setTrener(termin.getTrener());
+        ostaje.setPrijaviliClanovi(terminSet);
+        ostaje.setCena(termin.getCena());
+        ostaje.setKraj(termin.getKraj());
+        ostaje.setPocetak(termin.getPocetak());
+        ostaje.setTrening(termin.getTrening());
+
+
+        //cuvanje u bazu
+        Clan izmenjen=this.clanRepository.save(ispravljen);
+        Termin izmenjen1=this.terminRepository.save(ostaje);*/
+        return ispravljenT;
     }
 
 }

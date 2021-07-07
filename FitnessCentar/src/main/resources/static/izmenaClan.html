@@ -12,6 +12,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/izmenaClan.js"></script>
+    <script src="js/logOut.js"></script>
+    <script src="js/zastitaClan.js"></script>
     
     
  
@@ -19,36 +21,43 @@
 
 
 
-<nav class="navbar navbar-inverse ">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="clan.html" >AHILEJ</a>
-      </div>
-      <ul class="nav navbar-nav">
-        
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Treninzi <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Svi treninzi</a></li>
-            <li><a href="#">Prijavljeni treninzi</a></li>
-            <li><a href="#">Odradjeni treninzi</a></li>
-            
+
+    <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="clan.html" >AHILEJ</a>
+        </div>
+        <ul class="nav navbar-nav">
           
-           
-          </ul>
-        </li>
-
-       
-          <li><a href="#">Treninzi koje mozete oceniti</a></li>
-        
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-       
-        <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
-          <button type="submit" class="logOut" >LogOUT</button> </a></li>
-      </ul>
-    </div>
-  </nav>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Treninzi <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="treninziClan.html">Svi treninzi</a></li>
+              <li><a href="prijavljeniTreninzi.html">Prijavljeni treninzi</a></li>
+              <li><a href="odradjeniTreninzi.html">Odradjeni treninzi</a></li>
+   
+            </ul>
+          </li>  
+          
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Detalji treninga <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="crossfit.html">Crossfit </a></li>
+              <li><a href="box.html">Box</a></li>
+              <li><a href="zumba.html">Zumba</a></li>
+              <li><a href="tabata.html">Tabata</a></li>
+   
+            </ul>
+          </li> 
+         
+          
+        </ul>
+      
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="clan.html"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+          <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+            <button type="submit" class="logOut" >LogOUT</button> </a></li>
+        </ul>
+      </div>
+    </nav>
 
 
 
@@ -83,7 +92,15 @@
       </div>
 
       <div class="pass">
-        <label for="inputPassword4" class="form-label">Password</label>
+        <label for="inputPassword" class="form-label">Old password</label>
+        <input type="password" class="form-control" id="inputPassword" >
+      </div>
+      <div  class="alert alert-warning" role="alert" style="display: none;">
+        Old password not correct!
+       </div>
+
+      <div class="pass">
+        <label for="inputPassword4" class="form-label">New password</label>
         <input type="password" class="form-control" id="inputPassword4" >
       </div>
       <label for="psw-repeat">Repeat Password</label>

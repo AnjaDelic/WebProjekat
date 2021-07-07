@@ -166,6 +166,7 @@ public class ClanController {
         povratni.setSurname(clan.getSurname());
         povratni.setPhone(clan.getPhone());
         povratni.setBirthday(clan.getBirthday());
+        povratni.setId(id);
 
 
 

@@ -1,34 +1,17 @@
-$(document).ready(function () {
-    let uloga = localStorage.getItem('uloga');
-    if(uloga == null){
-        localStorage.setItem('uloga', 0);
-    }
-    if(uloga == 0){
-        alert(" Nemate pristup ovoj stranici!");
-        window.location.href = "index.html";
 
-    }
-    if(uloga == 1){ //trener
-        alert("Nemate pristup ovoj stranici !");
-        window.location.href = "trener.html";
-
-    }
-    if(uloga == 3){ //admin
-        alert(" Nemate pristup ovoj stranici!");
-        window.location.href="admin.html";
-    }
-});
 
 
 $(document).on("submit", "#forma", function (event) {
     event.preventDefault();
 
-
+        let id = localStorage.getItem('id');
+          let pass = localStorage.getItem('idPass');
         let name = $("#inputName").val();
         let surname = $("#inputSurname").val();
         let birthday = $("#rodjendan").val();
         let username = $("#inputUsername").val();
         let password = $("#inputPassword4").val();
+        let old = $("#inputPassword").val();
         let passwordREP = $("#psw-repeat").val();
         let email = $("#inputEmail4").val();
         let phone = $("#inputNumber").val();
@@ -39,14 +22,19 @@ $(document).on("submit", "#forma", function (event) {
             $('.alert-danger').show();
             return;
         }
+        if(old!==pass){
+             $('.alert-warning').show();
+            return;}
 
         if(name==""){name=null;}
         if(surname==""){surname=null;}
         if(birthday==""){birthday=null;}
         if(username==""){username=null;}
-        if(password=="" ){password=null; passwordREP=null;}
+        if(password=="" ){password=null; passwordREP=null; }  
         if(email==""){email=null;}
         if(phone==""){phone=null;}
+        if(old=="" && password!==""){alert("Unesite staru lozinku prvo"); return;}
+       
 
         let noviKorisnik = {
             name,
@@ -59,7 +47,7 @@ $(document).on("submit", "#forma", function (event) {
             vrati,
             active
         }
-        let id = localStorage.getItem('id');
+       
    
         $.ajax({
             type: "PUT",

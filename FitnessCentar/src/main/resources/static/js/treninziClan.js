@@ -15,11 +15,12 @@ $(document).ready(function () {
                 row += "<td>" +  tr.cena + "</td>";
                 row += "<td>" +  tr.pocetak + "</td>";
                 row += "<td>" +  tr.kraj + "</td>";
-                   
-                let btn1 = "<button id='zakazi' class='btn-success' data-id=" + tr.id + ">Prijavi se za trening</button>";
+                
+                let btn1 = "<button id='zakazi' class='btn-success' data-id=" + tr.id + ">Prijavi se</button>";
                 row += "<td>" + btn1 + "</td>"; 
 
-               
+                let btn2 = "<button id='info' class='btn-info' data-id=" + tr.naziv + ">Detalji treninga</button>";
+                row += "<td>" + btn2 + "</td>"; 
         
                 row += "</tr>";                                     
 
@@ -30,6 +31,12 @@ $(document).ready(function () {
             console.log("ERROR:\n", response);
         }
     });
+
+
+
+
+    
+
 });
 
 $(document).on("submit", "#sviTreninzi", function (event) {  
@@ -221,3 +228,15 @@ function sortNumber(n) {
       }
     }
   }
+
+  $(document).on('click', '#info', function () {  
+    let naziv=this.dataset.id;
+    if(naziv=="crossfit"){ window.location.href="crossfit.html";}
+    else if(naziv=="box"){ window.location.href="box.html";}
+    else if(naziv=="zumba"){ window.location.href="zumba.html";}
+    else if(naziv=="tabata"){ window.location.href="tabata.html";}
+    else{alert("greska");}
+
+    
+
+});

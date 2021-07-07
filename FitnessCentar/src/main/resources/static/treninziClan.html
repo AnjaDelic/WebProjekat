@@ -12,7 +12,8 @@
     <script src="js/jquery.min.js"></script>
     
     <script src="js/jquery.validate.min.js"></script>
-   
+    <script src="/js/zastitaClan.js"></script> 
+    <script src="js/logOut.js"></script>
     <script src="/js/treninziClan.js"></script> 
     <script src="/js/prijavaTreninga.js"></script> 
 </head>
@@ -37,7 +38,17 @@
                 <li><a href="odradjeniTreninzi.html">Odradjeni treninzi</a></li>
      
               </ul>
-            </li>       
+            </li>  
+            
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Detalji treninga <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="crossfit.html">Crossfit </a></li>
+                <li><a href="box.html">Box</a></li>
+                <li><a href="zumba.html">Zumba</a></li>
+                <li><a href="tabata.html">Tabata</a></li>
+     
+              </ul>
+            </li> 
            
             
           </ul>
@@ -128,8 +139,11 @@
 
 
         <br><br>
+      
+        
+
         <div class="container">
-            <table class="table table-dark" id="treninzi">
+            <table class="table table-dark" id="treninzi" >
               <thead>
                 <tr>
                     
@@ -140,7 +154,9 @@
                     <th onclick="sortNumber(4)">Cena</th>
                     <th onclick="sortTable(5)">Pocetak</th>
                     <th onclick="sortTable(6)">Kraj</th>
+                  
                     <th>Prijavi se</th>
+                    <th>Detalji o treningu</th>
                 </tr>      
               </thead>
               <tbody id="treninzi2">

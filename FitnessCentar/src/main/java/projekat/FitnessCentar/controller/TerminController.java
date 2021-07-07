@@ -47,6 +47,26 @@ public class TerminController {
 
     }
 
+    @GetMapping(value = "/slobodni",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Integer>> slobodno() {
+        List<Termin> terminList = this.terminService.findAll();
+        List<TreningDTOPretraga> dtoList=new ArrayList<>();
+        List<Integer> slobodno=new ArrayList<>();
+        int br=0;
+        int brrijavljenih=0;
+
+        for(Termin tr:terminList){
+            for(Clan c:tr.getPrijaviliClanovi()){
+                brrijavljenih++;
+            }
+            br=tr.getSala().getKapacitet()-brrijavljenih;
+            slobodno.add(br);
+        }
+
+        return new ResponseEntity<>(slobodno,HttpStatus.OK);
+
+    }
+
     @PostMapping (value = "/pretraga",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TreningDTOPretraga>> pretraga(@RequestBody TreningDTO tr) throws Exception {
         TreningDTOPretraga treningDTO=new TreningDTOPretraga();

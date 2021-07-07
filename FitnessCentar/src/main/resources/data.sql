@@ -10,7 +10,7 @@ INSERT INTO CLAN (active,birthday,email,name,password,phone,surname,username) VA
 INSERT INTO FC (adresa,broj,email,naziv) VALUES ('Mise Dimitrijevica 56','02145221','ahilejgrbavica@gmail.com','AhilejGrbavica')
 INSERT INTO FC (adresa,broj,email,naziv) VALUES ('Rumenacka','02145223','ahilejdtlnr@gmail.com','AhilejDetelinara')
 
-INSERT INTO SALA (kapacitet,oznaka,broj,fitness_centar_id) VALUES ('100','a1','2',1)
+INSERT INTO SALA (kapacitet,oznaka,broj,fitness_centar_id) VALUES ('2','a1','2',1)
 INSERT INTO SALA (kapacitet,oznaka,broj,fitness_centar_id) VALUES ('100','a2','3',1)
 INSERT INTO SALA (kapacitet,oznaka,broj,fitness_centar_id) VALUES ('50','b1','1',2)
 INSERT INTO SALA (kapacitet,oznaka,broj,fitness_centar_id) VALUES ('15','b2','4',2)

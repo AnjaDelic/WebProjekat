@@ -43,8 +43,7 @@ $(document).on("submit", "#sviTreninzi", function (event) {
         type: "POST",                                               
         url: "http://localhost:8080/pretragaOcenjenih/"+ id,                
         dataType: "json",                                        
-       // contentType: "application/json",   
-      // data: JSON.stringify(ocena),  
+       
         success: function (response) {                              
             console.log("SUCCESS:\n", response);    
             
@@ -78,8 +77,7 @@ $(document).on("submit", "#sviTreninzi", function (event) {
             type: "POST",                                               
             url: "http://localhost:8080/pretragaNeocenjenih/"+ id,                
             dataType: "json",                                        
-            //contentType: "application/json",   
-          // data: JSON.stringify(ocena),  
+          
             success: function (response) {                              
                 console.log("SUCCESS:\n", response);    
                 

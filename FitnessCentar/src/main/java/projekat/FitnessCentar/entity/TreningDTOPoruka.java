@@ -2,18 +2,17 @@ package projekat.FitnessCentar.entity;
 
 import java.util.Date;
 
-public class TreningDTOPretraga {
+public class TreningDTOPoruka {
 
     String naziv,tip,opis;
-    int cena;
+    int cena,vrati;
     double trajanje;
-    Date pocetak,kraj ;
-    Long id;
+    Date  pocetak,kraj ;
 
-    public TreningDTOPretraga() {
+    public TreningDTOPoruka() {
     }
 
-    public TreningDTOPretraga(String naziv, String tip, String opis, int cena, double trajanje, Date pocetak, Date kraj, Long id) {
+    public TreningDTOPoruka(String naziv, String tip, String opis, int cena, double trajanje, Date pocetak, Date kraj, int vrati) {
         this.naziv = naziv;
         this.tip = tip;
         this.opis = opis;
@@ -21,7 +20,15 @@ public class TreningDTOPretraga {
         this.trajanje = trajanje;
         this.pocetak = pocetak;
         this.kraj = kraj;
-        this.id=id;
+        this.vrati=vrati;
+    }
+
+    public int getVrati() {
+        return vrati;
+    }
+
+    public void setVrati(int vrati) {
+        this.vrati = vrati;
     }
 
     public String getNaziv() {
@@ -56,7 +63,6 @@ public class TreningDTOPretraga {
         this.cena = cena;
     }
 
-
     public double getTrajanje() {
         return trajanje;
     }
@@ -81,11 +87,17 @@ public class TreningDTOPretraga {
         this.kraj = kraj;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "TreningDTO{" +
+                "naziv='" + naziv + '\'' +
+                ", tip='" + tip + '\'' +
+                ", opis='" + opis + '\'' +
+                ", cena=" + cena +
+                ", trajanje=" + trajanje +
+                ", pocetak=" + pocetak +
+                ", kraj=" + kraj +
+                '}';
     }
 }
+

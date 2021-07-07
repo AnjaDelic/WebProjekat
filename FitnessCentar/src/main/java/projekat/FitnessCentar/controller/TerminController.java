@@ -31,14 +31,14 @@ public class TerminController {
     private OcenaService ocenaService;
 
     @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TreningDTO>> sviTr() {
+    public ResponseEntity<List<TreningDTOPretraga>> sviTr() {
         List<Termin> terminList = this.terminService.findAll();
-        List<TreningDTO> dtoList=new ArrayList<>();
+        List<TreningDTOPretraga> dtoList=new ArrayList<>();
        for(Termin tr:terminList){
 
-           TreningDTO treningDTO=new TreningDTO(tr.getTrening().getNaziv(),tr.getTrening().getTip(),
+           TreningDTOPretraga treningDTO=new TreningDTOPretraga(tr.getTrening().getNaziv(),tr.getTrening().getTip(),
                                 tr.getTrening().getOpis(),tr.getCena(),tr.getTrening().getTrajanje(),
-                                tr.getPocetak(),tr.getKraj());
+                                tr.getPocetak(),tr.getKraj(),tr.getId());
            dtoList.add(treningDTO);
 
        }
@@ -48,10 +48,19 @@ public class TerminController {
     }
 
     @PostMapping (value = "/pretraga",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<TreningDTO>> pretraga(@RequestBody TreningDTO tr) throws Exception {
-        TreningDTO treningDTO=new TreningDTO(tr.getNaziv(),tr.getTip(),tr.getOpis(),tr.getCena(),tr.getTrajanje(),tr.getPocetak(),tr.getKraj());
+    public ResponseEntity<List<TreningDTOPretraga>> pretraga(@RequestBody TreningDTO tr) throws Exception {
+        TreningDTOPretraga treningDTO=new TreningDTOPretraga();
+        treningDTO.setCena(tr.getCena());
+        treningDTO.setKraj(tr.getKraj());
+        treningDTO.setPocetak(tr.getPocetak());
+        treningDTO.setNaziv(tr.getNaziv());
+        treningDTO.setTrajanje(tr.getTrajanje());
+        treningDTO.setOpis(tr.getOpis());
+        treningDTO.setTip(tr.getTip());
 
-        List<TreningDTO> lista=terminService.findSpec(treningDTO);
+        List<TreningDTOPretraga> lista=terminService.findSpec(treningDTO);
+
+
 
         return new ResponseEntity<>(lista,HttpStatus.OK);
 
@@ -99,24 +108,40 @@ public class TerminController {
         return new ResponseEntity<>(terminList, HttpStatus.OK);
     }
 
-    @PutMapping (value = "/prijavljeniPut/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<TreningDTO> updatePrijavljeni(@PathVariable Long id, @RequestBody ClanID idClana) throws Exception
+    @PutMapping(value = "/prijava/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TreningDTOPoruka> prijaviTrening(@PathVariable Long id, @RequestBody ClanID idClana) throws Exception
     {
         Clan clan=this.clanService.findOneID(idClana.getIdClana());
         Termin termin=this.terminService.findOneID(id);
-
-
-        Set<Termin> clanSet=clan.getPrijavljeniTermini();
-        Set<Clan> terminSet=termin.getPrijaviliClanovi();
-
-
 
         Set<Termin>prijaviliTermini=clan.getPrijavljeniTermini();
         Set<Clan> prijaviliClanovi=termin.getPrijaviliClanovi();
 
 
-        prijaviliTermini.remove(termin);
-        prijaviliClanovi.remove(clan);
+
+        //vec prijavio
+        for(Termin c:prijaviliTermini){
+            if(c.getId().equals(id)){
+                TreningDTOPoruka treningDTOPoruka=new TreningDTOPoruka();
+                treningDTOPoruka.setVrati(1); //ako je 1 prijavio je
+                return new ResponseEntity<>(treningDTOPoruka,HttpStatus.OK);
+            }
+        }
+        int br=0; //koliko clanova je prijavilo
+        //nema mesta
+            for(Clan c:prijaviliClanovi){
+                br++;
+            }
+            if(termin.getSala().getKapacitet()==br){
+                TreningDTOPoruka treningDTOPoruka=new TreningDTOPoruka();
+                treningDTOPoruka.setVrati(2); //ako je 2 nema mesta
+                return new ResponseEntity<>(treningDTOPoruka,HttpStatus.OK);
+            }
+
+
+        prijaviliTermini.add(termin);
+        prijaviliClanovi.add(clan);
+
 
 
 
@@ -152,13 +177,15 @@ public class TerminController {
         Clan azuriran=this.clanService.updateClan(ispravljen);
         Termin azuriran1=this.terminService.updateTermin(ostaje);
 
-        TreningDTO treningDTO=new TreningDTO(azuriran1.getTrening().getNaziv(),azuriran1.getTrening().getTip(),
+        TreningDTOPoruka treningDTO=new TreningDTOPoruka(azuriran1.getTrening().getNaziv(),azuriran1.getTrening().getTip(),
                 azuriran1.getTrening().getOpis(),azuriran1.getCena(),azuriran1.getTrening().getTrajanje(),
-                azuriran1.getPocetak(),azuriran1.getKraj());
+                azuriran1.getPocetak(),azuriran1.getKraj(),0); //ako je vrati 0 sve je ok
 
         return new ResponseEntity<>(treningDTO,HttpStatus.CREATED);
 
     }
+
+
 
 
 }

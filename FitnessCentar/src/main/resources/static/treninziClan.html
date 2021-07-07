@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Treninzi</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   
+    <script src="js/jquery.min.js"></script>
+    
+    <script src="js/jquery.validate.min.js"></script>
+   
+    <script src="/js/treninziClan.js"></script> 
+    <script src="/js/prijavaTreninga.js"></script> 
+</head>
+<body>
+
+  
+
+
+
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="clan.html" >AHILEJ</a>
+          </div>
+          <ul class="nav navbar-nav">
+            
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Treninzi <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="treninziClan.html">Svi treninzi</a></li>
+                <li><a href="prijavljeniTreninzi.html">Prijavljeni treninzi</a></li>
+                <li><a href="odradjeniTreninzi.html">Odradjeni treninzi</a></li>
+     
+              </ul>
+            </li>       
+           
+            
+          </ul>
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="clan.html"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+              <button type="submit" class="logOut" >LogOUT</button> </a></li>
+          </ul>
+        </div>
+      </nav>
+      
+     
+    
+
+      <div id="sviTreninzi">
+        <h1>Treninzi</h1>
+        
+        <form id="tr" >
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="inputCenaOd">Cena manja od:</label>
+              <input type="number" class="form-control" id="inputCenaOd" >
+            </div>
+          
+          </div>
+        
+            <div class="form-group col-md-4">
+              <label for="inputTip">Tip</label>
+              <select id="inputTip" class="form-control">
+                <option selected value="svi"> Izaberite...</option>
+                <option>cardio</option>
+                <option>snage</option>
+                <option>anaerobni</option>
+              </select>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputNaziv">Naziv</label>
+              <select id="inputNaziv" class="form-control">
+                <option selected value="svi">Izaberite...</option>
+                <option>crossfit</option>
+                <option>box</option>
+                <option>zumba</option>
+                <option>tabata</option>
+              </select>
+            </div>
+            
+            <div class="form-group col-md-4">
+              <label for="inputOpis" >Opis</label>
+              <select id="inputOpis" class="form-control">
+                <option selected value="svi" >Izaberite...</option>
+                <option>za pocetnike vezbace</option>
+                <option>za srednje vezbace</option>
+                <option>za napredne vezbace </option>
+                <option>za sve vezbace</option>
+              </select>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group col-md-6">
+              <label for="inputTrajanjeOd">Trajanje manje od:</label>
+              <input type="number" class="form-control" id="inputTrajanjeOd" >
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputPocetak">Datum od:</label>
+              <input type="date" class="form-control" id="inputPocetak" value="" >
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputKraj">Datum do:</label>
+              <input type="date" class="form-control" id="inputKraj" value="">
+            </div>
+
+           
+
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <button type="submit" class="btn btn-primary">Pretrazi po kriterijumima</button>
+        </form>
+
+
+
+
+
+        <br><br>
+        <div class="container">
+            <table class="table table-dark" id="treninzi">
+              <thead>
+                <tr>
+                    
+                    <th onclick="sortTable(0)">Naziv</th>
+                    <th onclick="sortTable(1)">Opis</th>
+                    <th onclick="sortTable(2)">Tip</th>
+                    <th onclick="sortNumber(3)"> Trajanje(min)</th>
+                    <th onclick="sortNumber(4)">Cena</th>
+                    <th onclick="sortTable(5)">Pocetak</th>
+                    <th onclick="sortTable(6)">Kraj</th>
+                    <th>Prijavi se</th>
+                </tr>      
+              </thead>
+              <tbody id="treninzi2">
+
+              </tbody>          
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

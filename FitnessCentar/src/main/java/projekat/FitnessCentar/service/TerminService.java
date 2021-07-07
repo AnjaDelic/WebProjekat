@@ -33,47 +33,47 @@ public class TerminService {
     }
 
 
-    public List<TreningDTO> findSpec(TreningDTO tr){
+    public List<TreningDTOPretraga> findSpec(TreningDTOPretraga tr){
         List<Termin> terminList = this.terminRepository.findAll();
-        List<TreningDTO> treningDTO=new ArrayList<>();
+        List<TreningDTOPretraga> treningDTO=new ArrayList<>();
 
         for(Termin termin:terminList){
             //treningDTO svi treninzi
-            TreningDTO trening=new TreningDTO(termin.getTrening().getNaziv(),termin.getTrening().getTip(),
+            TreningDTOPretraga trening=new TreningDTOPretraga(termin.getTrening().getNaziv(),termin.getTrening().getTip(),
                     termin.getTrening().getOpis(),termin.getCena(),termin.getTrening().getTrajanje(),
-                    termin.getPocetak(),termin.getKraj());
+                    termin.getPocetak(),termin.getKraj(),termin.getId());
             treningDTO.add(trening);
             //System.out.println(trening);
 
         }
 
-        List<TreningDTO> poCeni=new ArrayList<>();
-        for(TreningDTO termin: treningDTO ){
+        List<TreningDTOPretraga> poCeni=new ArrayList<>();
+        for(TreningDTOPretraga termin: treningDTO ){
             if(tr.getCena() >= termin.getCena() ){
                 poCeni.add(termin);
 
             }
         }
 
-        List<TreningDTO> poNazivu=new ArrayList<>();
+        List<TreningDTOPretraga> poNazivu=new ArrayList<>();
         if(!tr.getNaziv().equalsIgnoreCase("svi")) {
 
-            for (TreningDTO termin : poCeni) {
+            for (TreningDTOPretraga termin : poCeni) {
                 if (tr.getNaziv().equals(termin.getNaziv())) {
                     poNazivu.add(termin);
                 }
             }
         } else {
 
-            for (TreningDTO termin : poCeni) {
+            for (TreningDTOPretraga termin : poCeni) {
 
                 poNazivu.add(termin);
             }
         }
 
-           List<TreningDTO> poTipu=new ArrayList<>();
+           List<TreningDTOPretraga> poTipu=new ArrayList<>();
         if(!tr.getTip().equalsIgnoreCase("svi")) {
-            for (TreningDTO termin : poNazivu) {
+            for (TreningDTOPretraga termin : poNazivu) {
                 if (tr.getTip().equals(termin.getTip())) {
                     poTipu.add(termin);
                 }
@@ -81,45 +81,45 @@ public class TerminService {
         }
         else {
 
-            for (TreningDTO termin : poNazivu) {
+            for (TreningDTOPretraga termin : poNazivu) {
 
                     poTipu.add(termin);
 
         }}
 
-           List<TreningDTO> poOpis=new ArrayList<>();
+           List<TreningDTOPretraga> poOpis=new ArrayList<>();
         if(!tr.getOpis().equalsIgnoreCase("svi")) {
-            for (TreningDTO termin : poTipu) {
+            for (TreningDTOPretraga termin : poTipu) {
                 if (tr.getOpis().equals(termin.getOpis())) {
                     poOpis.add(termin);
                 }
             }
         }else {
 
-            for (TreningDTO termin : poTipu) {
+            for (TreningDTOPretraga termin : poTipu) {
 
                     poOpis.add(termin);
 
             }
         }
 
-           List<TreningDTO> poTrajanju=new ArrayList<>();
-           for(TreningDTO termin:poOpis){
+           List<TreningDTOPretraga> poTrajanju=new ArrayList<>();
+           for(TreningDTOPretraga termin:poOpis){
                if(tr.getTrajanje() >= termin.getTrajanje() ){
                    poTrajanju.add(termin);
                }
            }
 
-           List<TreningDTO> poPocetku=new ArrayList<>();
-           for(TreningDTO termin:poTrajanju){
+           List<TreningDTOPretraga> poPocetku=new ArrayList<>();
+           for(TreningDTOPretraga termin:poTrajanju){
                System.out.println("KRITERIJUM: " + tr.getPocetak() + " DATUM: " + termin.getPocetak() + " POSLE: " + termin.getPocetak().after(tr.getPocetak()));
                if(termin.getPocetak().after(tr.getPocetak()) ){ //zelimo treninge posle ovog
                    poPocetku.add(termin);
                }
            }
 
-           List<TreningDTO> poKraj=new ArrayList<>();
-           for(TreningDTO termin:poTrajanju){
+           List<TreningDTOPretraga> poKraj=new ArrayList<>();
+           for(TreningDTOPretraga termin:poTrajanju){
                if(termin.getKraj().before(tr.getKraj()) ){
                    poKraj.add(termin);
                }

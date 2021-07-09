@@ -1,6 +1,6 @@
 $(document).ready(function () {   
     let id = localStorage.getItem('id');
-   
+    localStorage.removeItem('idPass');
     $.ajax({
         type: "GET",                                               
         url: "http://localhost:8080/api/termin/getOdradjeni/"+id,                 

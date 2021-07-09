@@ -67,7 +67,8 @@ public class Termin  {
 	
 	@Column(nullable=false)
 	private int cena;
-	
+	@Column
+	private int prijavljeni;
 	
 
 	public Termin() {
@@ -75,6 +76,13 @@ public class Termin  {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getPrijavljeni() {
+		return prijavljeni;
+	}
+
+	public void setPrijavljeni(int prijavljeni) {
+		this.prijavljeni = prijavljeni;
+	}
 
 	public Set<Ocena> getOcene() {
 		return ocene;

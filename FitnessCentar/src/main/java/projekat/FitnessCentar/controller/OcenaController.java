@@ -13,6 +13,7 @@ import projekat.FitnessCentar.entity.*;
 import projekat.FitnessCentar.service.ClanService;
 import projekat.FitnessCentar.service.OcenaService;
 import projekat.FitnessCentar.service.TerminService;
+import projekat.FitnessCentar.service.TrenerService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class OcenaController {
     private ClanService clanService;
     @Autowired
     private TerminService terminService;
+    @Autowired
+    private TrenerService trenerService;
 
     @PostMapping(value = "/pretragaNeocenjenih/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<TreningDTOPretraga>> pretragaO(@PathVariable Long id) throws Exception {
@@ -69,7 +72,7 @@ public class OcenaController {
 
     }
 
-    @PutMapping (value = "/api/ocena/post")
+    @PutMapping (value = "/api/ocena/put")
     public ResponseEntity<OcenaDTO> update(@RequestBody OcenaDTO o) throws Exception{
         Clan clan=this.clanService.findOneID(o.getIdClan());
         Termin termin=this.terminService.findOneID(o.getIdTermin());
@@ -85,17 +88,17 @@ public class OcenaController {
             }
 
         }
-        Ocena nova=this.ocenaService.add(ocena);
+
 
 
         Set<Termin>ocenjeniTermini=clan.getOcenjeniTermini();
         Set<Clan> oceniliClanovi=termin.getOceniliClanovi();
         Set<Ocena> cl=clan.getOcene();
-        Set<Ocena> ter=termin.getOcene();
+        Set<Ocena> ocene=termin.getOcene();
 
         ocenjeniTermini.add(termin);
         oceniliClanovi.add(clan);
-        ter.add(ocena);
+        ocene.add(ocena);
 
         Clan ispravljen=new Clan();
         ispravljen.setId(clan.getId());
@@ -126,8 +129,35 @@ public class OcenaController {
         ispravljenT.setId(termin.getId());
         Termin azuriran1=this.terminService.updateTermin(ispravljenT);
 
+        int brOcena=0;
+        Trener noviTR= termin.getTrener();
 
-      OcenaDTO povratna=new OcenaDTO(nova.getOcena(), nova.getClan().getId(),nova.getTermin().getId());
+        for(Ocena ocena1:ocene){
+            if(ocena1.getTermin().getTrener().equals(noviTR)){
+                brOcena++;
+            }
+        }
+
+        double prosecna=(noviTR.getProsek()+ o.getOcena())/brOcena;
+
+
+        noviTR.setId(noviTR.getId());
+        noviTR.setTermini(noviTR.getTermini());
+        noviTR.setFitness_centri(noviTR.getFitness_centri());
+        noviTR.setActive(noviTR.isActive());
+        noviTR.setEmail(noviTR.getEmail());
+        noviTR.setProsek(prosecna);
+        noviTR.setBirthday(noviTR.getBirthday());
+        noviTR.setName(noviTR.getName());
+        noviTR.setPassword(noviTR.getPassword());
+        noviTR.setPhone(noviTR.getPhone());
+        noviTR.setSurname(noviTR.getSurname());
+        noviTR.setUsername(noviTR.getUsername());
+        Trener izmenjen =this.trenerService.updateTrener(noviTR);
+
+
+
+      OcenaDTO povratna=new OcenaDTO(ocena.getOcena(), ocena.getClan().getId(),ocena.getTermin().getId());
 
     return new ResponseEntity<>(povratna,HttpStatus.CREATED);
     }

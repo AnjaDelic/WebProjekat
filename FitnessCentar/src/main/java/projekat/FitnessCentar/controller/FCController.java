@@ -46,7 +46,7 @@ public class FCController {
         List<SalaDTO> salaList=new ArrayList<>();
         for (Sala s:sale)
         {
-            SalaDTO jedan=new SalaDTO(s.getOznaka(),s.getKapacitet(),s.getBroj(),s.getId());
+            SalaDTO jedan=new SalaDTO(s.getOznaka(),s.getKapacitet(),s.getId());
             salaList.add(jedan);
         }
 

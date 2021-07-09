@@ -118,14 +118,14 @@ public class TerminService {
 
            List<TerminDTO> poPocetku=new ArrayList<>();
            for(TerminDTO termin:poTrajanju){
-               System.out.println("KRITERIJUM: " + tr.getPocetak() + " DATUM: " + termin.getPocetak() + " POSLE: " + termin.getPocetak().after(tr.getPocetak()));
+              // System.out.println("KRITERIJUM: " + tr.getPocetak() + " DATUM: " + termin.getPocetak() + " POSLE: " + termin.getPocetak().after(tr.getPocetak()));
                if(termin.getPocetak().after(tr.getPocetak()) ){ //zelimo treninge posle ovog
                    poPocetku.add(termin);
                }
            }
 
            List<TerminDTO> poKraj=new ArrayList<>();
-           for(TerminDTO termin:poTrajanju){
+           for(TerminDTO termin:poPocetku){
                if(termin.getKraj().before(tr.getKraj()) ){
                    poKraj.add(termin);
                }
@@ -157,6 +157,7 @@ public class TerminService {
         ispravljenT.setKraj(termin.getKraj());
         ispravljenT.setPocetak(termin.getPocetak());
         ispravljenT.setTrening(termin.getTrening());
+        ispravljenT.setPrijavljeni(termin.getPrijavljeni());
 
         //cuvanje u bazu
         Termin izmenjen=this.terminRepository.save(ispravljenT);

@@ -5,6 +5,7 @@ $(document).on('click', '.btnSeeMore', function () {
     sviDiv.hide(); 
 
     let id=this.dataset.id;
+    localStorage.setItem('idFC',id);
     
     $.ajax({
         type: "GET",

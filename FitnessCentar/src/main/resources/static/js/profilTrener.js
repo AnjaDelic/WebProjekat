@@ -2,6 +2,12 @@
 $(document).ready(function () {
     let id = localStorage.getItem('id');
 
+    if(id==null)
+        {
+            alert("idTrenera nije def");
+            return;
+        }
+ 
     $.ajax({
         type: "GET",                                                // HTTP metoda
         url: "http://localhost:8080/api/trener/get/" +id,                 // URL koji se gađa
@@ -57,7 +63,7 @@ $(document).on('click', '#termin ', function () {
 
 $(document).on('click', '#raspored ', function () {  
     
-    window.location.href="raspored.html";
+    window.location.href="treninziTrener.html";
     
 
 });

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import projekat.FitnessCentar.entity.*;
+import projekat.FitnessCentar.service.FCService;
 import projekat.FitnessCentar.service.SalaService;
 
 import java.util.ArrayList;
@@ -20,15 +21,20 @@ public class SalaController {
     @Autowired
     private SalaService salaService;
 
-    @PutMapping(value = "/put/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<SalaDTO> updateSala(@PathVariable Long id, @RequestBody Sala s) throws Exception
+    @Autowired
+    private FCService fcService;
+
+    @PutMapping(value = "/put/{id}/{idFC}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<SalaDTO> updateSala(@PathVariable Long id,@PathVariable Long idFC, @RequestBody Sala s) throws Exception
     {
+        FC fc=this.fcService.findOne(idFC);
         Sala sala = new Sala(s.getKapacitet(),s.getOznaka());
-        sala.setId(id); //proslednjen nam je njegov id
+        sala.setId(id);
+        sala.setFitness_centar(fc);//proslednjen nam je njegov id
 
         Sala izmenjenasala= salaService.updateSala(sala);
 
-        SalaDTO povratna = new SalaDTO(izmenjenasala.getOznaka(),izmenjenasala.getKapacitet(),izmenjenasala.getBroj(), izmenjenasala.getId());
+        SalaDTO povratna = new SalaDTO(izmenjenasala.getOznaka(),izmenjenasala.getKapacitet(), izmenjenasala.getId());
 
         return new ResponseEntity<>(povratna, HttpStatus.OK);
 
@@ -43,7 +49,7 @@ public class SalaController {
 
 
         Sala nova= salaService.createSala(sala);
-        SalaDTO povratna=new SalaDTO(nova.getOznaka(),nova.getKapacitet(),nova.getBroj(), nova.getId());
+        SalaDTO povratna=new SalaDTO(nova.getOznaka(),nova.getKapacitet(), nova.getId());
 
         return new ResponseEntity<>(povratna, HttpStatus.CREATED);
     }

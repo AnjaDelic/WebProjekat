@@ -38,9 +38,10 @@ $(document).ready(function () {
         
     }
     let id = localStorage.getItem('idSale');
+    let idFC = localStorage.getItem('idFC');
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/api/sala/put/"+id ,                 // URL na koji saljem,odg na post metodu
+        url: "http://localhost:8080/api/sala/put/"+id+ "/"+idFC ,                 // URL na koji saljem,odg na post metodu
         dataType: "json",                                           // povratna vrednost
         contentType: "application/json",                            //saljemo
         data: JSON.stringify(izmena),                                //  pretvara JavaScript objekat u JSON

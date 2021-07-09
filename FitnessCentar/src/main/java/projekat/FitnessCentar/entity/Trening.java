@@ -23,9 +23,7 @@ public class Trening {
 	
 	@Column
 	private String tip;
-	
-	
-	
+
 	@OneToMany(mappedBy="trening", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
 	private Set<Termin>termini= new HashSet<Termin>();
 

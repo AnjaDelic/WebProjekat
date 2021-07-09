@@ -232,7 +232,7 @@ public class TrenerController {
         povratni.setEmail(trener.getEmail());
         povratni.setName(trener.getName());
         povratni.setPassword(trener.getPassword());
-
+        povratni.setProsek(trener.getProsek());
         povratni.setSurname(trener.getSurname());
         povratni.setPhone(trener.getPhone());
         povratni.setBirthday(trener.getBirthday());

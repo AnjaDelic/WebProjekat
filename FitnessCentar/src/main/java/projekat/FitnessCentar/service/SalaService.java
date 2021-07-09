@@ -29,7 +29,7 @@ public class SalaService {
         if(sala.getOznaka()!=null){proba.setOznaka(sala.getOznaka());}
         proba.setTermini(sala.getTermini());
         proba.setId(sala.getId());
-        proba.setBroj(sala.getBroj());
+
         proba.setFitness_centar(sala.getFitness_centar());
 
         //cuvanje u bazu

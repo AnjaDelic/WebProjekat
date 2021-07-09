@@ -42,6 +42,18 @@ $(document).on('click', "#button", function (event) {
         let trajanje = $("#inputTrajanje").val();
         let opis = $("#inputOpis").val();
 
+        if(id==null)
+        {
+            alert("idTrenera nije def");
+            return;
+        }
+ 
+        if(idFC==null)
+        {
+            alert("idFC nije def");
+            return;
+        }
+        
 
         if(cena=="" || pocetak=="" || kraj==""){alert("Unesite trazene podatke"); return;}
        

@@ -1,6 +1,12 @@
 $(document).ready(function () {   
     let idFC = localStorage.getItem('idFC');
     
+    if(idFC==null)
+        {
+            alert("idFC nije def");
+            return;
+        }
+ 
     $.ajax({
         type: "GET",                                               
         url: "http://localhost:8080/api/sala/"+idFC,                 
@@ -60,6 +66,13 @@ $(document).on('click', '.signupbtn', function (event) {
         if(cena=="" || pocetak=="" || kraj==""){alert("Unesite trazene podatke"); return;}
        
        
+        if(id==null)
+        {
+            alert("idTrenera nije def");
+            return;
+        }
+ 
+
         let noviTermin = {
            pocetak,
            kraj,

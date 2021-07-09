@@ -1,7 +1,8 @@
-$(document).ready(function () {   
+$(document).ready(function () {  
+    let idFC=localStorage.getItem('idFC');
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/termin/slobodni",                 // URL koji se gađa
+        url: "http://localhost:8080/api/termin/"+idFC,                 // URL koji se gađa
         dataType: "json",                                           // tip povratne vrednosti
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
@@ -15,13 +16,12 @@ $(document).ready(function () {
                 row += "<td>" +  tr.cena + "</td>";
                 row += "<td>" +  tr.pocetak + "</td>";
                 row += "<td>" +  tr.kraj + "</td>";
-                row+="<td>" +  tr.br + "</td>";
+            
                 
-                let btn1 = "<button id='zakazi' class='btn-success' data-id=" + tr.id + ">Prijavi se</button>";
+                let btn1 = "<button id='izmeni' class='btn-success' data-id=" + tr.id + ">Izmeni</button>";
                 row += "<td>" + btn1 + "</td>"; 
 
-                let btn2 = "<button id='info' class='btn-info' data-id=" + tr.naziv + ">Detalji treninga</button>";
-                row += "<td>" + btn2 + "</td>"; 
+               
         
                 row += "</tr>";                                     
 
@@ -47,6 +47,8 @@ $(document).on("submit", "#sviTreninzi", function (event) {
     clear.empty();
 
     id=localStorage.getItem('idTermin');
+
+    idFC=localStorage.getItem('idFC');
     naziv = document.forms['tr'].inputNaziv.value;
    
     opis = document.forms['tr'].inputOpis.value;
@@ -87,11 +89,10 @@ $(document).on("submit", "#sviTreninzi", function (event) {
 
        
     }
-
     console.log(pretraga);
     $.ajax({
         type: "POST",                                               
-        url: "http://localhost:8080/api/termin/pretraga",                
+        url: "http://localhost:8080/api/termin/pretraga/"+idFC,                
         dataType: "json",                                        
         contentType: "application/json",   
         data: JSON.stringify(pretraga),  
@@ -109,13 +110,12 @@ $(document).on("submit", "#sviTreninzi", function (event) {
                 row += "<td>" +  tr.cena + "</td>";
                 row += "<td>" +  tr.pocetak + "</td>";
                 row += "<td>" +  tr.kraj + "</td>";
-                row+="<td>" +  tr.br + "</td>";
                
-                let btn1 = "<button id='zakazi' class='btn-success' data-id=" + tr.id + ">Prijavi se </button>";
+               
+                let btn1 = "<button id='izmeni' class='btn-success' data-id=" + tr.id + ">Izmeni</button>";
                 row += "<td>" + btn1 + "</td>"; 
 
-                let btn2 = "<button id='info' class='btn-info' data-id=" + tr.naziv + ">Detalji treninga</button>";
-                row += "<td>" + btn2 + "</td>"; 
+                
                                      
         
                 row += "</tr>";                                     
@@ -237,14 +237,12 @@ function sortNumber(n) {
     }
   }
 
-  $(document).on('click', '#info', function () {  
-    let naziv=this.dataset.id;
-    if(naziv=="crossfit"){ window.location.href="crossfit.html";}
-    else if(naziv=="box"){ window.location.href="box.html";}
-    else if(naziv=="zumba"){ window.location.href="zumba.html";}
-    else if(naziv=="tabata"){ window.location.href="tabata.html";}
-    else{alert("greska");}
-
+  $(document).on('click', '#izmeni', function () {  
+    let idTermina=this.dataset.id;
+    localStorage.setItem('idTermin',idTermina);
     
+    window.location.href="izmenaRasporeda.html";
+   
+
 
 });

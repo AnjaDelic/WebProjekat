@@ -2,7 +2,7 @@
 $(document).on('click', '#zakazi', function () {  
     let id=this.dataset.id; //ID TERMINA
     localStorage.setItem('idTermina',id);
-    
+    localStorage.removeItem('idPass'); 
     let idClana = localStorage.getItem('id'); //id clana
 
     let posalji={

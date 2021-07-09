@@ -27,7 +27,8 @@ public class TerminController {
     @Autowired
     private TreningService treningService;
 
-
+    @Autowired
+    private FCService fcService;
 
     @Autowired
     private SalaService salaService;
@@ -47,6 +48,26 @@ public class TerminController {
            dtoList.add(treningDTO);
 
        }
+
+        return new ResponseEntity<>(dtoList,HttpStatus.OK);
+
+    }
+
+    @GetMapping(value = "/{idFC}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TreningDTOPretraga>> sviTrFC(@PathVariable Long idFC) {
+        FC fc=this.fcService.findOne(idFC);
+        List<Termin> terminList = this.terminService.findAll();
+        List<TreningDTOPretraga> dtoList=new ArrayList<>();
+        for(Termin tr:terminList){
+            if(tr.getTrener().getFitness_centri().equals(fc)){
+                TreningDTOPretraga treningDTO=new TreningDTOPretraga(tr.getTrening().getNaziv(),tr.getTrening().getTip(),
+                        tr.getTrening().getOpis(),tr.getCena(),tr.getTrening().getTrajanje(),
+                        tr.getPocetak(),tr.getKraj(),tr.getId());
+                dtoList.add(treningDTO);
+            }
+
+
+        }
 
         return new ResponseEntity<>(dtoList,HttpStatus.OK);
 
@@ -73,12 +94,47 @@ public class TerminController {
             treningDTO.setNaziv(tr.getTrening().getNaziv());
             treningDTO.setOpis(tr.getTrening().getOpis());
             treningDTO.setTip(tr.getTrening().getTip());
-            treningDTO.setTip(tr.getTrening().getTip());
+            treningDTO.setTrajanje(tr.getTrening().getTrajanje());
             treningDTO.setId(tr.getId());
             dtoList.add(treningDTO);
         }
 
         return new ResponseEntity<>(dtoList,HttpStatus.OK);
+
+    }
+
+    @PostMapping (value = "/pretraga/{idFC}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<TerminDTO>> pretragapoFC(@RequestBody TerminDTO tr,@PathVariable Long idFC) throws Exception {
+        TerminDTO treningDTO=new TerminDTO();
+        treningDTO.setCena(tr.getCena());
+        treningDTO.setKraj(tr.getKraj());
+        treningDTO.setPocetak(tr.getPocetak());
+        treningDTO.setNaziv(tr.getNaziv());
+        treningDTO.setTrajanje(tr.getTrajanje());
+        treningDTO.setOpis(tr.getOpis());
+        treningDTO.setTip(tr.getTip());
+        treningDTO.setId(tr.getId());
+        treningDTO.setBr(tr.getBr());
+        treningDTO.setId(tr.getId());
+
+
+
+
+
+        List<TerminDTO> lista=terminService.findSpec(treningDTO);
+        List<TerminDTO> vrati=new ArrayList<>();
+
+        for(TerminDTO t:lista){
+            Termin termin=this.terminService.findOneID(t.getId());
+
+            if(termin.getTrener().getFitness_centri().getId().equals(idFC)){
+                vrati.add(t);
+
+            }
+        }
+
+
+        return new ResponseEntity<>(vrati,HttpStatus.OK);
 
     }
 
@@ -94,6 +150,7 @@ public class TerminController {
         treningDTO.setTip(tr.getTip());
         treningDTO.setId(tr.getId());
         treningDTO.setBr(tr.getBr());
+        tr.setId(tr.getId());
 
         List<TerminDTO> lista=terminService.findSpec(treningDTO);
 
@@ -102,6 +159,8 @@ public class TerminController {
         return new ResponseEntity<>(lista,HttpStatus.OK);
 
     }
+
+
 
 
 
@@ -210,6 +269,8 @@ public class TerminController {
         ostaje.setTrening(termin.getTrening());
         ostaje.setId(termin.getId());
 
+        ostaje.setPrijavljeni(termin.getPrijavljeni()+1);
+
         //cuvanje u bazu
         Clan azuriran=this.clanService.updateClan(ispravljen);
         Termin azuriran1=this.terminService.updateTermin(ostaje);
@@ -237,7 +298,11 @@ public class TerminController {
         prijaviliClanovi.remove(clan);
         List<TreningDTOPretraga> terminList=new ArrayList<>();
 
+        int br=0; //koliko clanova je prijavilo
 
+        for(Clan c:prijaviliClanovi){
+            br++;
+        }
 
 
         Clan ispravljen=new Clan();
@@ -267,6 +332,9 @@ public class TerminController {
         ostaje.setPocetak(termin.getPocetak());
         ostaje.setTrening(termin.getTrening());
         ostaje.setId(termin.getId());
+        int prijavljeni= termin.getPrijavljeni();
+        int vrati = prijavljeni-1;
+        ostaje.setPrijavljeni(vrati);
 
         //cuvanje u bazu
         Clan azuriran=this.clanService.updateClan(ispravljen);
@@ -309,6 +377,7 @@ public class TerminController {
         terminNovi.setTrener(trener);
         terminNovi.setSala(sala);
         terminNovi.setTrening(trening);
+        terminNovi.setPrijavljeni(0);
 
         trenerTermini.add(terminNovi);
         //saleTermini.add(terminNovi);
@@ -331,7 +400,7 @@ public class TerminController {
         novaSala.setOznaka(sala.getOznaka());
         novaSala.setKapacitet(sala.getKapacitet());
         novaSala.setFitness_centar(sala.getFitness_centar());
-        novaSala.setBroj(sala.getBroj());
+
         novaSala.setTermini(saleTermini);
         novaSala.setId(sala.getId());
 
@@ -378,6 +447,7 @@ public class TerminController {
         terminNovi.setTrener(trener);
         terminNovi.setSala(sala);
         terminNovi.setTrening(treningNovi);
+        terminNovi.setPrijavljeni(0);
 
         trenerTermini.add(terminNovi);
 
@@ -385,7 +455,7 @@ public class TerminController {
         novaSala.setOznaka(sala.getOznaka());
         novaSala.setKapacitet(sala.getKapacitet());
         novaSala.setFitness_centar(sala.getFitness_centar());
-        novaSala.setBroj(sala.getBroj());
+
         novaSala.setTermini(saleTermini);
         novaSala.setId(sala.getId());
 
@@ -423,6 +493,55 @@ public class TerminController {
     }
 
 
+    @PutMapping(value = "/putNoviRaspored/{id}")
+    public ResponseEntity<TerminDTORaspored> noviRaspored(@PathVariable Long id, @RequestBody TerminDTORaspored terminDTORaspored) throws Exception
+    {
+
+
+        Trening trening=this.treningService.find(terminDTORaspored.getNaziv());
+
+        Termin termin=this.terminService.findOneID(terminDTORaspored.getIdTermina());
+
+
+        if(termin.getTrening().getTrajanje()<trening.getTrajanje()){
+
+            TerminDTORaspored povratni=new TerminDTORaspored();
+            povratni.setVrati("ne");
+            return new ResponseEntity<>(povratni,HttpStatus.OK);
+
+        }
+
+        Termin ostaje=new Termin();
+
+        ostaje.setOcene(termin.getOcene());
+        ostaje.setOceniliClanovi(termin.getOceniliClanovi());
+        ostaje.setOdradiliClanovi(termin.getOdradiliClanovi());
+        ostaje.setSala(termin.getSala());
+        ostaje.setTrener(termin.getTrener());
+        ostaje.setPrijaviliClanovi(termin.getPrijaviliClanovi());
+        ostaje.setCena(termin.getCena());
+        ostaje.setKraj(termin.getKraj());
+        ostaje.setPocetak(termin.getPocetak());
+        ostaje.setTrening(trening);
+        ostaje.setId(termin.getId());
+        ostaje.setPrijavljeni(termin.getPrijavljeni());
+
+        Termin t= this.terminService.updateTermin(ostaje);
+
+
+
+
+        TerminDTORaspored povratni=new TerminDTORaspored();
+        povratni.setIdFC(terminDTORaspored.getIdFC());
+        povratni.setIdTermina(terminDTORaspored.getIdTermina());
+        povratni.setNaziv(terminDTORaspored.getNaziv());
+        povratni.setVrati("ok");
+
+
+
+        return new ResponseEntity<>(povratni,HttpStatus.OK);
+
+    }
 
 
 }

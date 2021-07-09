@@ -3,28 +3,22 @@ package projekat.FitnessCentar.entity;
 public class SalaDTO {
 
     String oznaka;
-    int kapacitet,broj;
+    int kapacitet;
 
     Long id;
 
     public SalaDTO() {
     }
 
-    public SalaDTO(String oznaka, int kapacitet, int broj, Long id) {
+    public SalaDTO(String oznaka, int kapacitet,  Long id) {
 
         this.oznaka = oznaka;
         this.kapacitet = kapacitet;
-        this.broj = broj;
+
         this.id = id;
     }
 
-    public int getBroj() {
-        return broj;
-    }
 
-    public void setBroj(int broj) {
-        this.broj = broj;
-    }
 
     public Long getId() {
         return id;

@@ -4,6 +4,7 @@ $(document).on("submit", "#forma", function (event) {
 
         let id = localStorage.getItem('id');
           let pass = localStorage.getItem('idPass');
+       
         let name = $("#inputName").val();
         let surname = $("#inputSurname").val();
         let birthday = $("#rodjendan").val();

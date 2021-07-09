@@ -1,4 +1,5 @@
 $(document).ready(function () {   
+  localStorage.removeItem('idPass'); 
     $.ajax({
         type: "GET",                                                // HTTP metoda
         url: "http://localhost:8080/api/termin/slobodni",                 // URL koji se gađa

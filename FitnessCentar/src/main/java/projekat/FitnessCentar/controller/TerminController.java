@@ -78,14 +78,10 @@ public class TerminController {
         List<Termin> terminList = this.terminService.findAll();
         List<TerminDTO> dtoList=new ArrayList<>();
 
-        int br=0;
-        int brrijavljenih=0;
 
         for(Termin tr:terminList){
-            for(Clan c:tr.getPrijaviliClanovi()){
-                brrijavljenih++;
-            }
-            br=tr.getSala().getKapacitet()-brrijavljenih;
+            int br=tr.getSala().getKapacitet()-tr.getPrijavljeni();
+
             TerminDTO treningDTO=new TerminDTO();
             treningDTO.setBr(br);
             treningDTO.setCena(tr.getCena());
@@ -96,8 +92,8 @@ public class TerminController {
             treningDTO.setTip(tr.getTrening().getTip());
             treningDTO.setTrajanje(tr.getTrening().getTrajanje());
             treningDTO.setId(tr.getId());
-            dtoList.add(treningDTO);
-        }
+            dtoList.add(treningDTO);}
+
 
         return new ResponseEntity<>(dtoList,HttpStatus.OK);
 
@@ -223,12 +219,8 @@ public class TerminController {
                 return new ResponseEntity<>(treningDTOPoruka,HttpStatus.OK);
             }
         }
-        int br=0; //koliko clanova je prijavilo
-        //nema mesta
-            for(Clan c:prijaviliClanovi){
-                br++;
-            }
-            if(termin.getSala().getKapacitet()==br){
+
+            if(termin.getSala().getKapacitet()==termin.getPrijavljeni()){
                 TreningDTOPoruka treningDTOPoruka=new TreningDTOPoruka();
                 treningDTOPoruka.setVrati(2); //ako je 2 nema mesta
                 return new ResponseEntity<>(treningDTOPoruka,HttpStatus.OK);
@@ -268,7 +260,6 @@ public class TerminController {
         ostaje.setPocetak(termin.getPocetak());
         ostaje.setTrening(termin.getTrening());
         ostaje.setId(termin.getId());
-
         ostaje.setPrijavljeni(termin.getPrijavljeni()+1);
 
         //cuvanje u bazu

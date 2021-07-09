@@ -1,10 +1,10 @@
 
 $(document).on("submit", "#forma", function (event) {
     event.preventDefault();
-
+        
         let id = localStorage.getItem('id');
           let pass = localStorage.getItem('idPass');
-       
+          localStorage.removeItem('idPass'); 
         let name = $("#inputName").val();
         let surname = $("#inputSurname").val();
         let birthday = $("#rodjendan").val();

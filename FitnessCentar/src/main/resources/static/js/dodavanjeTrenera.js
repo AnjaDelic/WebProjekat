@@ -10,7 +10,7 @@ $(document).ready(function () {
     }
     if(uloga == 1){ //trener
         alert("Nemate pristup ovoj stranici !");
-        window.location.href = "index.html";
+       
         window.location.href = "trener.html";
         
     }
@@ -63,7 +63,9 @@ $(document).on("submit", "#dodavanjeTrenera", function (event) {
         success: function (response) {
             console.log(response);
             if(response.vrati===0){
-                alert("CESTITAMO:Vasa registracija je primljena! ");
+                alert("CESTITAMO:Dodali ste trenera! ");
+                
+             window.location.href = "admin.html";
             }
             else {
                 alert("Greska prilikom unosa podataka!"); 

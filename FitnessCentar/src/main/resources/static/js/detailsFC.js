@@ -1,5 +1,5 @@
 
-$(document).on('click', '.btnSeeMore', function () {   
+$(document).on('click', '#more', function () {   
       
     let sviDiv = $("#svi");                     
     sviDiv.hide(); 
@@ -58,7 +58,7 @@ $(document).on('click', '.btnSeeMore', function () {
                 row += "<td>" + sale.oznaka + "</td>";
                 let btn1 = "<button id='izmenaSale' class='btnSeeMore' data-id=" + sale.id + ">Izmeni</button>";
                 row += "<td>" + btn1 + "</td>";
-                row += "<td>" + sale.broj + "</td>";         
+                    
                 btn = "<button  class='btn-danger' data-id=" + sale.id + ">Odbisi salu</button>";
                 row += "<td>" + btn + "</td>";
                               

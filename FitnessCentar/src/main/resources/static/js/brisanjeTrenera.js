@@ -34,6 +34,7 @@ $(document).ready(function () {
                 let row = "<tr>";
                 row += "<td>" + tr.name + "</td>";
                 row += "<td>" + tr.surname + "</td>";
+                row += "<td>" + tr.username + "</td>";
                 row += "<td>" + tr.active + "</td>";
 
 

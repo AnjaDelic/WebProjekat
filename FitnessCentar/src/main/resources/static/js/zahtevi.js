@@ -34,7 +34,7 @@ $(document).ready(function () {
                 let row = "<tr>";
                 row += "<td>" + tr.name + "</td>";
                 row += "<td>" + tr.surname + "</td>";
-
+                row += "<td>" + tr.username + "</td>";
                 let btn = "<button class='btn-success'  data-id=" + tr.id + ">Prihvati</button>";
                 row += "<td>" + btn + "</td>";                      // ubacujemo button u poslednju ćeliju reda
                 btn = "<button class='btn-danger' data-id=" + tr.id + ">Odbij</button>";

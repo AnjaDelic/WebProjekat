@@ -62,6 +62,7 @@ public class TrenerController {
             trenerDTO.setSurname(t.getSurname());
             trenerDTO.setActive(t.isActive());
             trenerDTO.setId(t.getId());
+            trenerDTO.setUsername(t.getUsername());
             povratnaLista.add(trenerDTO);
 
         }
@@ -139,7 +140,7 @@ public class TrenerController {
 
     //izmena clan
     @PutMapping(value = "/put/{id}")
-    public ResponseEntity<Trener> updateTrainer(@PathVariable Long id) throws Exception
+    public ResponseEntity<TrenerZahteviDTO> updateTrainer(@PathVariable Long id) throws Exception
      {
          Trener trener = this.trenerService.findOne1(id);
          if (trener == null) {
@@ -147,7 +148,14 @@ public class TrenerController {
          }
          trener.setActive(true);
          Trener savedTrener = this.trenerService.updateTrener(trener);
-         return new ResponseEntity<Trener>(savedTrener ,HttpStatus.OK);
+         TrenerZahteviDTO vrati=new TrenerZahteviDTO();
+         vrati.setUsername(savedTrener.getUsername());
+         vrati.setName(savedTrener.getName());
+         vrati.setId(savedTrener.getId());
+         vrati.setSurname(savedTrener.getSurname());
+
+
+         return new ResponseEntity<>(vrati ,HttpStatus.OK);
      }
 
      @GetMapping ( produces = MediaType.APPLICATION_JSON_VALUE)
@@ -158,7 +166,7 @@ public class TrenerController {
         for (Trener tr:lista)
         {
             if(tr.isActive()==false){
-          TrenerZahteviDTO trjedan = new TrenerZahteviDTO(tr.getName(),tr.getSurname(),tr.getId());
+          TrenerZahteviDTO trjedan = new TrenerZahteviDTO(tr.getName(),tr.getSurname(),tr.getId(),tr.getUsername());
             trList.add(trjedan); }
         }
         return new ResponseEntity<>(trList,HttpStatus.OK);

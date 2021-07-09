@@ -18,7 +18,7 @@ $(document).on('click', '#zakazi', function () {
         success: function (response) {
             console.log(response);
 
-            if(response.vrati=="0"){alert("Uspesno prijavili trening");  window.location.href="clan.html";}
+            if(response.vrati=="0"){alert("Uspesno prijavili trening"); }
             if(response.vrati=="1"){alert("Vec ste prijavili trening");}
             if(response.vrati=="2"){alert("Trenutno nema mesta");}
 

@@ -35,7 +35,7 @@ $(document).ready(function () {
                 row += "<td>" + fc.broj + "</td>";
                 row += "<td>" + fc.email + "</td>";
              
-                let btn = "<button  class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
+                let btn = "<button id='more' class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
                 row += "<td>" + btn + "</td>";    
                 
                 let btn1 = "<button id='dodajTrenera' class='btn-success' data-id=" + fc.id + ">Dodaj trenera</button>";

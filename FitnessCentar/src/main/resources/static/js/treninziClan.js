@@ -243,7 +243,7 @@ function sortNumber(n) {
     else if(naziv=="box"){ window.location.href="box.html";}
     else if(naziv=="zumba"){ window.location.href="zumba.html";}
     else if(naziv=="tabata"){ window.location.href="tabata.html";}
-    else{alert("greska");}
+    else{alert("Ovaj trening je verovatno nov pa za njega jos uvek nema info"); return;}
 
     
 

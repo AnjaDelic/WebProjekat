@@ -11,12 +11,12 @@ $(document).ready(function () {
     if(uloga == 1){ //trener
         alert("Nemate pristup ovoj stranici !");
         window.location.href = "index.html";
-        //window.location.href = "trener.html";
+        window.location.href = "trener.html";
         
     }
     if(uloga == 2){ //clan
         alert(" Nemate pristup ovoj stranici!");
-        //window.location.href="clan.html";
+        window.location.href="clan.html";
     }
  });
 
@@ -40,7 +40,7 @@ $(document).on("submit", "#dodavanjeTrenera", function (event) {
         return;
     }
 
-  
+    id=localStorage.getItem('idFC');
     
     let noviKorisnik = {
         name,
@@ -56,7 +56,7 @@ $(document).on("submit", "#dodavanjeTrenera", function (event) {
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/trener/postAdmin",
+        url: "http://localhost:8080/api/trener/postAdmin/"+id,
         dataType: "json",                                           
         contentType: "application/json",                           
         data: JSON.stringify(noviKorisnik),                               

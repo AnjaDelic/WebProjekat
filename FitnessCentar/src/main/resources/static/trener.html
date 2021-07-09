@@ -1,10 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <meta charset="UTF-8">
+    <title>Trenerska stranica</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="/js/zastitaTrener.js"></script> 
+    <script src="js/profilTrener.js"></script>
+    <script src="js/logOut.js"></script>
+    
+    
+  </head>
+  <body>
+   
+
+
+   
+
+
+    <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="trener.html" >AHILEJ</a>
+        </div>
+      
+      
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="trener.html"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+          <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+            <button type="submit" class="logOut" >LogOUT</button> </a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <div class="bg-text" >
+  <h4>Uspesno ste se prijavili kao trener!</h4>
+  <h1 style="font-size:60px ">WELCOME TO AHILEJ</h1>
+  <br/>
+  <h2 style="text-align:center">Izaberite funkcionalnost</h2>
+  
+  <button id="trening" type="button" class="btn btn-primary btn-lg btn-block"> Dodavanje treninga</button>
+  <button id="raspored" type="button" class="btn btn-secondary btn-lg btn-block"> Izmena rasporeda</button>
+  <button id="termin" type="button" class="btn btn-primary btn-lg btn-block"> Dodavanje termina</button>
+</div>
+<br/>
+<br/>
+<br/>
+<div id="profil">
+<table class="table table-dark" id="tabela" >
+    <thead>
+      <tr>
+        
+        <th >Ime</th>
+        <th >Prezime</th>
+        <th >Username</th>
+        <th >Email</th>
+        <th >Phone</th>
+        <th >Birthday</th>
+        
+        <th >Trenutna prosecna ocena </th>
+
+      </tr>
+    </thead>
+  
+  </table>
+ </div>
+    
+  </body>
+
 </html>

@@ -7,6 +7,9 @@ public class SalaDTO {
 
     Long id;
 
+    public SalaDTO() {
+    }
+
     public SalaDTO(String oznaka, int kapacitet, int broj, Long id) {
 
         this.oznaka = oznaka;

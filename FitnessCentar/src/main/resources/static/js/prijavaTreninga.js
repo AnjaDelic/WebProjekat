@@ -25,7 +25,7 @@ $(document).on('click', '#zakazi', function () {
            
 
         },
-        error: function () {
+        error: function (response) {
             console.log(response);
             alert("Greška!");
         }

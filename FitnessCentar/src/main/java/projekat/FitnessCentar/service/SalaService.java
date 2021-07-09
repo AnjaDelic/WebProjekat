@@ -7,6 +7,8 @@ import projekat.FitnessCentar.entity.Sala;
 import projekat.FitnessCentar.entity.Trener;
 import projekat.FitnessCentar.repository.SalaRepository;
 
+import java.util.List;
+
 @Service
 public class SalaService {
 
@@ -25,7 +27,10 @@ public class SalaService {
         //promena vrednosti
         if(sala.getKapacitet()> -1 ){ proba.setKapacitet(sala.getKapacitet());}
         if(sala.getOznaka()!=null){proba.setOznaka(sala.getOznaka());}
-
+        proba.setTermini(sala.getTermini());
+        proba.setId(sala.getId());
+        proba.setBroj(sala.getBroj());
+        proba.setFitness_centar(sala.getFitness_centar());
 
         //cuvanje u bazu
         Sala izmenjena=this.salaRepository.save(proba);
@@ -53,4 +58,15 @@ public class SalaService {
         Sala sala=this.salaRepository.getOne(id);
         return sala;
     }
+
+    public List<Sala> findAll(){
+        List<Sala>povratak=this.salaRepository.findAll();
+        return povratak;
+    }
+
+    public Sala find(String oznaka){
+        Sala povratak=this.salaRepository.findSalaByOznaka(oznaka);
+        return povratak;
+    }
+
 }

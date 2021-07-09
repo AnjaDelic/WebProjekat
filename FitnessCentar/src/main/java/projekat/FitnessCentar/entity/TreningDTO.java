@@ -9,6 +9,9 @@ public class TreningDTO {
     double trajanje;
     Date  pocetak,kraj ;
 
+    public TreningDTO() {
+    }
+
     public TreningDTO(String naziv, String tip, String opis, int cena, double trajanje, Date pocetak, Date kraj) {
         this.naziv = naziv;
         this.tip = tip;

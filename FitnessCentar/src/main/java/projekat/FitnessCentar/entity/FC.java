@@ -101,4 +101,6 @@ public class FC implements Serializable{
 	public void setSale(Set<Sala> sale) {
 		this.sale = sale;
 	}
+
+
 }

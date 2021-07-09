@@ -57,7 +57,8 @@ public class TrenerService {
         probaTr.setSurname(tr.getSurname());
         probaTr.setUsername(tr.getUsername());
         probaTr.setProsek(tr.getProsek());
-
+        probaTr.setFitness_centri(tr.getFitness_centri());
+        probaTr.setTermini(tr.getTermini());
 
         //cuvanje u bazu
         Trener izmenjenTrener=this.trenerRepository.save(probaTr);

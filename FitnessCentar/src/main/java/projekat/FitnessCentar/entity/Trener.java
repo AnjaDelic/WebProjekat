@@ -58,11 +58,6 @@ public class Trener implements Serializable {
 		
 	}
 
-	
-
-	
-
-
 
 	public Trener(String username, String password, String name, String surname, String phone, String email,
 			Date birthday, boolean active, double prosek) {
@@ -186,8 +181,19 @@ public class Trener implements Serializable {
 	}
 
 
-	
-	
+	public Set<Termin> getTermini() {
+		return termini;
+	}
 
+	public void setTermini(Set<Termin> termini) {
+		this.termini = termini;
+	}
 
+	public FC getFitness_centri() {
+		return fitness_centri;
+	}
+
+	public void setFitness_centri(FC fitness_centri) {
+		this.fitness_centri = fitness_centri;
+	}
 }

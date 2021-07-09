@@ -1,10 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Dodavanje treninga</title>
+    <link rel="stylesheet" href="/css/signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/zastitaTrener.js"></script>
+  <script src="js/logOut.js"></script>
+  <script src="js/noviTermin.js"></script>
+  </head>
+  
 <body>
-$END$
+    
+ 
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="trener.html" >AHILEJ</a>
+          </div>
+        
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="trener.html"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+            <li><a href="login.html"><span class="glyphicon glyphicon-log-in" type></span>
+              <button type="submit" class="logOut" >LogOUT</button> </a></li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+
+  <form class="modal-content" action="/action_page.php" name="signup" id="signup">
+    <div class="container">
+      <h1>Dodavanje treninga</h1>
+      <p></p>
+    
+      
+      <div class="ime">
+        <label for="inputName" class="form-label">Naziv</label>
+        <input type="text" class="form-control" id="inputName" required>
+      </div>
+      <br/>
+      <div class="form-group col-md-4">
+        <label for="inputTip">Tip</label>
+        <select id="inputTip" class="form-control" required>
+          <option selected value="svi"> Izaberite...</option>
+          <option>cardio</option>
+          <option>snage</option>
+          <option>anaerobni</option>
+        </select>
+      </div>
+     
+     
+
+      <div class="form-group col-md-4">
+        <label for="inputOpis" >Opis</label>
+        <select id="inputOpis" class="form-control" required>
+          <option selected value="svi" >Izaberite...</option>
+          <option>za pocetnike vezbace</option>
+          <option>za srednje vezbace</option>
+          <option>za napredne vezbace </option>
+          <option>za sve vezbace</option>
+        </select>
+      </div>
+
+   
+    
+      <div class="form-group col-md-4">
+        <label for="inputTrajanje" class="form-label">Trajanje u min</label>
+        <input type="number" class="form-control" id="inputTrajanje" required>
+      </div>
+
+      <br/>
+      
+      <div class="form-label">
+        <label for="inputCena" class="form-label">Cena</label>
+        <input type="number" class="form-control" id="inputCena" required>
+      </div>
+      
+      <br/>
+      <div class="form-group col-md-4" id="sale">
+        <label for="inputSale">Sale</label>
+        <select id="inputSale" class="form-control">
+         <option selected value="svi" >Izaberite...</option>
+        </select>
+      </div>
+      <br/>
+     
+     <div class="form-label">
+        <label for="inputPocetak">Pocetak termina </label>
+       <input type="datetime-local"
+              id="inputPocetak" required >
+     
+     </div>
+     <br/>
+
+     <div class="form-label">
+        <label for="inputKraj">Kraj termina </label>
+       <input type="datetime-local"
+              id="inputKraj" required >
+     
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+      
+
+      <div class="clearfix">
+        <button type="submit" class="signupbtn" id="button"> <b> Sign Up </b> </button>
+      </div>
+    </div>
+  </form>
+  </div>
+
 </body>
+
 </html>
+

@@ -39,7 +39,7 @@ $(document).on("submit", "form", function (event) {
                 localStorage.setItem('uloga','1');
                 var index=response.id;
                 localStorage.setItem('id',index);
-                //window.location.href="trener.html";
+                window.location.href="trener.html";
                     }
                 
             },

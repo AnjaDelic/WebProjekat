@@ -11,12 +11,12 @@ $(document).ready(function () {
     if(uloga == 1){ //trener
         alert("Nemate pristup ovoj stranici !");
         window.location.href = "index.html";
-        //window.location.href = "trener.html";
+        window.location.href = "trener.html";
 
     }
     if(uloga == 2){ //clan
         alert(" Nemate pristup ovoj stranici!");
-        //window.location.href="clan.html";
+        window.location.href="clan.html";
     }
 });
 
@@ -36,10 +36,13 @@ $(document).ready(function () {
                 row += "<td>" + fc.email + "</td>";
              
                 let btn = "<button  class='btnSeeMore' data-id=" + fc.id + ">See More</button>";
-                row += "<td>" + btn + "</td>";                      
+                row += "<td>" + btn + "</td>";    
+                
+                let btn1 = "<button id='dodajTrenera' class='btn-success' data-id=" + fc.id + ">Dodaj trenera</button>";
+                row += "<td>" + btn1 + "</td>"; 
         
                 row += "</tr>";                                     
-
+               
                 $('#fcs').append(row);                       
             }
         },
@@ -47,6 +50,14 @@ $(document).ready(function () {
             console.log("ERROR:\n", response);
         }
     });
+});
+
+$(document).on('click', "#dodajTrenera", function () {
+  
+    let id=this.dataset.id;
+    localStorage.setItem('idFC',id);
+    window.location.href="dodavanjeTrenera.html";
+
 });
 
 

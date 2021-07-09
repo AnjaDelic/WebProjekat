@@ -57,7 +57,7 @@ $(document).on("submit", "#sviTreninzi", function (event) {
     if(kraj ===""){kraj="2025-09-09";}
    
     if(pocetak===""){pocetak="2000-09-09";}
-    
+    let br=0;
 
     
     let pretraga = {
@@ -67,7 +67,8 @@ $(document).on("submit", "#sviTreninzi", function (event) {
         cena,
        trajanje,
        pocetak,
-       kraj
+       kraj,
+       br
        
     }
 

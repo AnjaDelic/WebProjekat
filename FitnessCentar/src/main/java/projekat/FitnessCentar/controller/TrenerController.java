@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import projekat.FitnessCentar.entity.*;
+import projekat.FitnessCentar.service.FCService;
 import projekat.FitnessCentar.service.TrenerService;
 
 import java.util.ArrayList;
@@ -18,6 +19,9 @@ public class TrenerController {
 
     @Autowired
     private TrenerService trenerService;
+
+    @Autowired
+    private FCService fcService;
 
     @PostMapping (value = "/login",produces = MediaType.APPLICATION_JSON_VALUE) //odgovara na post zahtev
     public ResponseEntity<Trener> getTrener(@RequestBody Trener trener) throws Exception {
@@ -49,8 +53,21 @@ public class TrenerController {
     @GetMapping (value = "/sviTR",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Trener>> sviTR() {
         List<Trener> lista = this.trenerService.findAll();
+        List<Trener> povratnaLista=new ArrayList<>();
 
-        return new ResponseEntity<>(lista,HttpStatus.OK);
+        for(Trener t:lista){
+
+            Trener trenerDTO=new Trener();
+            trenerDTO.setName(t.getName());
+            trenerDTO.setSurname(t.getSurname());
+            trenerDTO.setActive(t.isActive());
+            trenerDTO.setId(t.getId());
+            povratnaLista.add(trenerDTO);
+
+        }
+
+
+        return new ResponseEntity<>(povratnaLista,HttpStatus.OK);
 
     }
 
@@ -149,11 +166,11 @@ public class TrenerController {
     }
 
     //dodavanje trenera
-    @PostMapping(value = "/postAdmin", produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<TrenerDTO> createTrenerAdmin(@RequestBody TrenerDTO c) throws Exception{
+    @PostMapping(value = "/postAdmin/{idFC}", produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TrenerDTO> createTrenerAdmin(@RequestBody TrenerDTO c,@PathVariable Long idFC) throws Exception{
 
         TrenerDTO tr = new TrenerDTO(c.getName(),c.getSurname(),c.getUsername(),c.getPassword(),c.getEmail(),c.getPhone(),c.getBirthday(),c.getVrati());
-
+        FC fc=this.fcService.findOne(idFC);
 
 
         List<Trener> trenerList = trenerService.findAll();
@@ -195,11 +212,40 @@ public class TrenerController {
         trener1.setPhone(tr.getPhone());
         trener1.setActive(true);
         trener1.setProsek(0.0);
+        trener1.setFitness_centri(fc);
 
 
         Trener noviTrener= trenerService.createTrenerAdmin(trener1);
 
         return new ResponseEntity<TrenerDTO>(trener2, HttpStatus.CREATED);
+    }
+
+    @GetMapping (value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TrenerDTOProfil> getTrener(@PathVariable Long id) throws Exception {
+
+        Trener trener=this.trenerService.findOne1(id);
+
+
+        TrenerDTOProfil povratni= new TrenerDTOProfil();
+
+        povratni.setUsername(trener.getUsername());
+        povratni.setEmail(trener.getEmail());
+        povratni.setName(trener.getName());
+        povratni.setPassword(trener.getPassword());
+
+        povratni.setSurname(trener.getSurname());
+        povratni.setPhone(trener.getPhone());
+        povratni.setBirthday(trener.getBirthday());
+        povratni.setId(id);
+        povratni.setIdFC(trener.getFitness_centri().getId());
+
+
+
+
+
+
+
+        return new ResponseEntity<>(povratni, HttpStatus.OK);
     }
 
 }

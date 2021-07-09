@@ -28,9 +28,15 @@ public class Trening {
 	
 	@OneToMany(mappedBy="trening", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
 	private Set<Termin>termini= new HashSet<Termin>();
-	
-	
-	
+
+	public Set<Termin> getTermini() {
+		return termini;
+	}
+
+	public void setTermini(Set<Termin> termini) {
+		this.termini = termini;
+	}
+
 	public Trening() {
 		
 	}

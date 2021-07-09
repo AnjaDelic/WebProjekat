@@ -1,7 +1,7 @@
 $(document).ready(function () {   
     $.ajax({
         type: "GET",                                                // HTTP metoda
-        url: "http://localhost:8080/api/termin",                 // URL koji se gađa
+        url: "http://localhost:8080/api/termin/slobodni",                 // URL koji se gađa
         dataType: "json",                                           // tip povratne vrednosti
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
@@ -15,6 +15,7 @@ $(document).ready(function () {
                 row += "<td>" +  tr.cena + "</td>";
                 row += "<td>" +  tr.pocetak + "</td>";
                 row += "<td>" +  tr.kraj + "</td>";
+                row+="<td>" +  tr.br + "</td>";
                 
                 let btn1 = "<button id='zakazi' class='btn-success' data-id=" + tr.id + ">Prijavi se</button>";
                 row += "<td>" + btn1 + "</td>"; 
@@ -45,6 +46,7 @@ $(document).on("submit", "#sviTreninzi", function (event) {
    let clear=$("#treninzi2");
     clear.empty();
 
+    id=localStorage.getItem('idTermin');
     naziv = document.forms['tr'].inputNaziv.value;
    
     opis = document.forms['tr'].inputOpis.value;
@@ -58,7 +60,7 @@ $(document).on("submit", "#sviTreninzi", function (event) {
    
     let pocetak = $("#inputPocetak").val();
     let kraj = $("#inputKraj").val();
-   
+    let br=0;
  
 
 
@@ -79,7 +81,9 @@ $(document).on("submit", "#sviTreninzi", function (event) {
         cena,
        trajanje,
        pocetak,
-       kraj
+       kraj,
+       br,
+       id
 
        
     }
@@ -105,9 +109,13 @@ $(document).on("submit", "#sviTreninzi", function (event) {
                 row += "<td>" +  tr.cena + "</td>";
                 row += "<td>" +  tr.pocetak + "</td>";
                 row += "<td>" +  tr.kraj + "</td>";
+                row+="<td>" +  tr.br + "</td>";
                
                 let btn1 = "<button id='zakazi' class='btn-success' data-id=" + tr.id + ">Prijavi se za trening</button>";
                 row += "<td>" + btn1 + "</td>"; 
+
+                let btn2 = "<button id='info' class='btn-info' data-id=" + tr.naziv + ">Detalji treninga</button>";
+                row += "<td>" + btn2 + "</td>"; 
                                      
         
                 row += "</tr>";                                     

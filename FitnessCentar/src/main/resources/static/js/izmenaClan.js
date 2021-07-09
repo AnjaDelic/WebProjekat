@@ -1,6 +1,4 @@
 
-
-
 $(document).on("submit", "#forma", function (event) {
     event.preventDefault();
 
@@ -35,7 +33,7 @@ $(document).on("submit", "#forma", function (event) {
         if(phone==""){phone=null;}
         if(old=="" && password!==""){alert("Unesite staru lozinku prvo"); return;}
        
-
+       
         let noviKorisnik = {
             name,
             surname,

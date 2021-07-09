@@ -7,11 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import projekat.FitnessCentar.entity.FC;
-import projekat.FitnessCentar.entity.Sala;
-import projekat.FitnessCentar.entity.SalaDTO;
-import projekat.FitnessCentar.entity.Trener;
+import projekat.FitnessCentar.entity.*;
 import projekat.FitnessCentar.service.SalaService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/api/sala")
@@ -56,6 +56,24 @@ public class SalaController {
         }
         this.salaService.deleteSala(id);
         return new ResponseEntity<>("uspesno obrisan",HttpStatus.OK); //odg 204 uspesno brisanje
+    }
+
+    @GetMapping(value ="/{idFC}",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<SalaDTO>> sveSale(@PathVariable Long idFC) {
+        List<Sala> lista = this.salaService.findAll();
+        List<SalaDTO> salaDTOS=new ArrayList<>();
+
+        for (Sala s:lista)
+        {
+            if(s.getFitness_centar().getId().equals(idFC)){
+            SalaDTO jedan=new SalaDTO();
+           jedan.setOznaka(s.getOznaka());
+
+            salaDTOS.add(jedan);
+        }
+        }
+        return new ResponseEntity<>(salaDTOS, HttpStatus.OK);
+
     }
 
 }

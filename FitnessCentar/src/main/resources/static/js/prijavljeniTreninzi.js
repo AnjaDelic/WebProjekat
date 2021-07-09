@@ -1,6 +1,6 @@
 $(document).ready(function () {   
     let id = localStorage.getItem('id');
-   
+    localStorage.removeItem("idPass");
     $.ajax({
         type: "GET",                                               
         url: "http://localhost:8080/api/termin/getPrijavljeni/"+id,                 
@@ -56,7 +56,7 @@ $(document).on('click', '#dugmeOdjava', function () {
             window.location.href="clan.html";
 
         },
-        error: function () {
+        error: function (response) {
             console.log(response);
             alert("Greška!");
         }
